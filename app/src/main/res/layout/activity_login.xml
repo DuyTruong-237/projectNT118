@@ -41,6 +41,7 @@
     <EditText
         android:id="@+id/edtPass"
         android:hint="Mật khẩu"
+        android:password="true"
         android:layout_marginLeft="40dp"
         android:layout_marginRight="40dp"
         android:drawablePadding="5dp"
