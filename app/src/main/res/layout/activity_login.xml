@@ -11,7 +11,7 @@
         android:src="@drawable/logo1"
         android:layout_centerHorizontal="true"
         />
-
+//abc
     <TextView
         android:id="@+id/txtLogin"
         android:layout_width="wrap_content"
