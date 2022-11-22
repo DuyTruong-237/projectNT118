@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onFinish() {
 
-                Intent intent = new Intent(MainActivity.this,MenuActivity.class );
+                Intent intent = new Intent(MainActivity.this,MapActivity.class );
                 startActivity(intent);
             }
         };
