@@ -21,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void moveActivity() {
-        CountDownTimer countDownTimert=new CountDownTimer(2000,1000) {
+        CountDownTimer countDownTimert=new CountDownTimer(10000,1000) {
             @Override
             public void onTick(long l) {
 
@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onFinish() {
 
-                Intent intent = new Intent(MainActivity.this,MapActivity.class );
+                Intent intent = new Intent(MainActivity.this,MenuActivity.class );
                 startActivity(intent);
             }
         };
