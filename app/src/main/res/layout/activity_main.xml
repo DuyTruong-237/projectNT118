@@ -15,7 +15,7 @@
 
 
         />
-    // progressbar load
+
     <ProgressBar
         android:id="@+id/progressBarload"
         style="?android:attr/progressBarStyle"
