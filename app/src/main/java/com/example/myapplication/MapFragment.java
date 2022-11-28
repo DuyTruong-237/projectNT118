@@ -13,6 +13,11 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+
+
+import com.example.myapplication.API.APIClient;
+import com.example.myapplication.API.APIInterface;
+import com.example.myapplication.Model.Map;
 import com.google.gson.Gson;
 import com.mapbox.mapboxsdk.Mapbox;
 import com.mapbox.mapboxsdk.camera.CameraPosition;
@@ -21,9 +26,6 @@ import com.mapbox.mapboxsdk.maps.MapView;
 import com.mapbox.mapboxsdk.maps.Style;
 import com.mapbox.mapboxsdk.module.http.HttpRequestUtil;
 
-import com.example.myapplication.API.APIClient;
-import com.example.myapplication.API.APIInterface;
-import com.example.myapplication.Model.Map;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
