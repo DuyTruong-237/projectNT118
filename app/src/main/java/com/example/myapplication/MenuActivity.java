@@ -1,6 +1,10 @@
 package com.example.myapplication;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -8,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.myapplication.API.APIClient;
 import com.example.myapplication.API.APIInterface;
 import com.example.myapplication.Model.Asset;
+import com.google.android.gms.maps.MapView;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -16,6 +21,7 @@ import retrofit2.Response;
 public class MenuActivity extends AppCompatActivity {
     APIInterface apiInterface;
     private  TextView txtto,txtHum,txtCL,txtWind;
+    private ImageView btnMap;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
@@ -23,6 +29,7 @@ public class MenuActivity extends AppCompatActivity {
         txtHum=findViewById(R.id.txtHum);
         txtCL=findViewById(R.id.txtClouds);
         txtWind=findViewById(R.id.txtWind);
+        btnMap=findViewById(R.id.mapButton);
         apiInterface = APIClient.getClient().create(APIInterface.class);
 
         Call<Asset> call = apiInterface.getAsset("6H4PeKLRMea1L0WsRXXWp9");//, "Bearer "+ token);
@@ -48,6 +55,7 @@ public class MenuActivity extends AppCompatActivity {
                 //txttype.setText(asset.type);
             }
 
+
             @Override
             public void onFailure(Call<Asset> call, Throwable t) {
                 Log.d("API CALL", t.getMessage().toString());
@@ -56,5 +64,19 @@ public class MenuActivity extends AppCompatActivity {
 
             }
         });
+        event();
+    }
+
+    private void event() {
+        btnMap.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+               moveActyvity();
+            }
+        });
+    }
+
+    private void moveActyvity(){
+        Intent intent = new Intent(MenuActivity.this,MapActivity.class );
+        startActivity(intent);
     }
 }

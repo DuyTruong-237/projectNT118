@@ -1,5 +1,7 @@
 <resources>
     <string name="app_name">My Application</string>
+=======
+>>>>>>> origin/truong
     <string name="title_activity_main2">MainActivity2</string>
 =======
     <string name="title_activity_info_list">activity_info_list</string>
