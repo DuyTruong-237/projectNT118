@@ -13,6 +13,9 @@ import com.example.myapplication.API.APIClient;
 import com.example.myapplication.API.APIInterface;
 import com.example.myapplication.Model.Asset;
 import com.google.android.gms.maps.MapView;
+import com.google.gson.JsonArray;
+
+import java.util.ArrayList;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -20,7 +23,7 @@ import retrofit2.Response;
 
 public class MenuActivity extends AppCompatActivity {
     APIInterface apiInterface;
-    private  TextView txtto,txtHum,txtCL,txtWind;
+    private  TextView txtto,txtHum,txtCL,txtWind, txtUV;
     private ImageView btnMap;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,9 +32,33 @@ public class MenuActivity extends AppCompatActivity {
         txtHum=findViewById(R.id.txtHum);
         txtCL=findViewById(R.id.txtClouds);
         txtWind=findViewById(R.id.txtWind);
+        txtUV=findViewById(R.id.txtUV);
         btnMap=findViewById(R.id.mapButton);
         apiInterface = APIClient.getClient().create(APIInterface.class);
+       /* Call<JsonArray> callcurrent=apiInterface.getCurrent();
+        callcurrent.enqueue(new Callback<JsonArray>() {
+            @Override
+            public void onResponse(Call<JsonArray> callc, Response<JsonArray> response) {
+                Log.d("API CALL", response.code()+"");
+                //Log.d ("API CALL", response.toString());
+               JsonArray arr = response.body();
 
+               // Log.d("API CALL", asset.type+"");
+               // double t=asset.attributes.get("temperature").getAsJsonObject().get("value").getAsFloat();
+                String id=arr.get(0).getAsJsonObject().get("id").getAsString();
+                txtUV.setText(id);
+
+                //txttype.setText(asset.type);
+            }
+
+            @Override
+            public void onFailure(Call<JsonArray> call, Throwable t) {
+                Log.d("API CALL", t.getMessage().toString());
+
+                //t.printStackTrace();
+
+            }
+        });*/
         Call<Asset> call = apiInterface.getAsset("6H4PeKLRMea1L0WsRXXWp9");//, "Bearer "+ token);
         call.enqueue(new Callback<Asset>() {
             @Override
@@ -41,7 +68,7 @@ public class MenuActivity extends AppCompatActivity {
                 Asset asset = response.body();
 
                 Log.d("API CALL", asset.type+"");
-                int t=asset.attributes.get("temperature").getAsJsonObject().get("value").getAsInt();
+               int t=asset.attributes.get("temperature").getAsJsonObject().get("value").getAsInt();
                 String a=String.valueOf(t);
                 txtto.setText(a);
                 int h=asset.attributes.get("humidity").getAsJsonObject().get("value").getAsInt();
@@ -76,7 +103,9 @@ public class MenuActivity extends AppCompatActivity {
     }
 
     private void moveActyvity(){
+        ArrayList<Integer>a;
         Intent intent = new Intent(MenuActivity.this,MapActivity.class );
+        //intent.putExtra("key",a);
         startActivity(intent);
     }
 }

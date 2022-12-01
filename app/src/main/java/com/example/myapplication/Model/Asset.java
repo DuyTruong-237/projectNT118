@@ -5,6 +5,8 @@ package com.example.myapplication.Model;
 import com.google.gson.JsonObject;
 import com.google.gson.annotations.SerializedName;
 
+import org.json.JSONObject;
+
 public class Asset {
     @SerializedName("id")
     public String id;

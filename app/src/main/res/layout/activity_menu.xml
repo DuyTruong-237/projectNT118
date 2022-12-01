@@ -94,7 +94,7 @@
             />
         <TextView
             android:text="00"
-
+            android:id="@+id/txtUV"
             android:textSize="55dp"
             android:textColor="#fff"
             android:layout_marginLeft="15dp"

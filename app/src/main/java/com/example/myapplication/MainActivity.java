@@ -21,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void moveActivity() {
-        CountDownTimer countDownTimert=new CountDownTimer(10000,1000) {
+        CountDownTimer countDownTimert=new CountDownTimer(5000,1000) {
             @Override
             public void onTick(long l) {
 
