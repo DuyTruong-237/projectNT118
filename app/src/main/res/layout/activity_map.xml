@@ -20,12 +20,44 @@
             android:layout_below="@+id/frame_layout"
             android:orientation="horizontal"
             android:layout_gravity="bottom">
-
-
           <ScrollView
               android:layout_width="match_parent"
               android:layout_height="wrap_content">
 
+              <TableLayout
+                  android:id="@+id/tb_undermap"
+                  android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  tools:ignore="InvalidId"
+                  android:stretchColumns="*">
+
+                  <TableRow
+                      android:id="@+id/tbRow1"
+                      android:layout_width="wrap_content"
+                      android:layout_height="wrap_content">
+
+                      <TextView
+                          android:id="@+id/tv1"
+                          android:layout_width="wrap_content"
+                          android:layout_height="wrap_content"
+                          android:text="Thiet bi dang truy cap"
+                          android:layout_marginTop="10dp"
+                          android:textAlignment="center">
+                      </TextView>
+                      <TextView
+                          android:id="@+id/tv2"
+                          android:layout_width="wrap_content"
+                          android:layout_height="wrap_content"
+                          android:text="TEN THIET BI "
+                          android:layout_marginTop="10dp"
+                          android:textAlignment="center">
+                      </TextView>
+
+
+                  </TableRow>
+
+
+              </TableLayout>
           </ScrollView>
 
 

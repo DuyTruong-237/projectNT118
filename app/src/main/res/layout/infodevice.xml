@@ -5,9 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 <include layout="@layout/activity_toolbar"/>
-
-
-
     <LinearLayout
         android:id="@+id/ll_1"
         android:layout_marginTop="70dp"
@@ -37,20 +34,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/tv_pin"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="PIN"
-                    android:textSize="25dp"
-                    android:background="@drawable/custom_vientextview"
-
-
-
-                    />
-
-
             </LinearLayout>
         </ScrollView>
     </LinearLayout>
