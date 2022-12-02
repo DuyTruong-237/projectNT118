@@ -41,7 +41,7 @@ public class activity_info_device extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.infodevice);
-         lvInfo=findViewById(R.id.lvInfo);
+
         ifadapter=new inforAdapter(activity_info_device.this,R.layout.asset_info_item);
         lvInfo.setAdapter(ifadapter);
         ImageView iv_back = findViewById(R.id.iv_back);
