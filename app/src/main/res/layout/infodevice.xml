@@ -44,8 +44,12 @@
                     android:layout_height="wrap_content"
                     android:text="PIN"
                     android:textSize="25dp"
+                    android:background="@drawable/custom_vientextview"
+
+
+
                     />
-               
+
 
             </LinearLayout>
         </ScrollView>
