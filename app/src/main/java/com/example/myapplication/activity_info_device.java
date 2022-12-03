@@ -37,10 +37,17 @@ public class activity_info_device extends AppCompatActivity {
     ListView lvInfo;
     inforAdapter ifadapter;
     APIInterface apiInterface;
+    String assetID;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.infodevice);
+        Bundle extras = getIntent().getExtras();
+        if (extras != null) {
+            String value = extras.getString("idDevice");
+            assetID=value;
+            //The key argument here must match that used in the other activity
+        }
          lvInfo=findViewById(R.id.lvInfo);
         ifadapter=new inforAdapter(activity_info_device.this,R.layout.asset_info_item);
         lvInfo.setAdapter(ifadapter);
@@ -68,7 +75,7 @@ public class activity_info_device extends AppCompatActivity {
 
     private void fakeData() {
         apiInterface = APIClient.getClient().create(APIInterface.class);
-        Call<Asset> call = apiInterface.getAsset("6H4PeKLRMea1L0WsRXXWp9");//, "Bearer "+ token);
+        Call<Asset> call = apiInterface.getAsset(assetID);//, "Bearer "+ token);
         call.enqueue(new Callback<Asset>() {
             @Override
             public void onResponse(Call<Asset> call, Response<Asset> response) {
@@ -94,15 +101,16 @@ public class activity_info_device extends AppCompatActivity {
                         String a,tt;
                            try {
 
-                                t=keyvalue.get("value").getAsDouble();
-                                a=String.valueOf(t);
+                               /* t=keyvalue.get("value").getAsDouble();
+                                a=String.valueOf(t);*/
+                               a=keyvalue.get("value").getAsString();
                             }catch (Exception e)
                             {
-                                Log.d("truongdeptrai", "onResponse: ");
+
                                 a="null";
                             }
                             //Log.d("truong2",keyvalue.get("value").getAsString() );
-                        if(a!="null")
+                        //if(a!="null")
                             ifadapter.add(new infoAsset(keyvalue.get("name").getAsString(), a));
 
                     }
