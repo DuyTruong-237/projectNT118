@@ -37,10 +37,12 @@ public class activity_info_device extends AppCompatActivity {
     ListView lvInfo;
     inforAdapter ifadapter;
     APIInterface apiInterface;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.infodevice);
+
 
         ifadapter=new inforAdapter(activity_info_device.this,R.layout.asset_info_item);
         lvInfo.setAdapter(ifadapter);
