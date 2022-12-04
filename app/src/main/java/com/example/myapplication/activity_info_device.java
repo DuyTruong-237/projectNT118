@@ -1,10 +1,12 @@
 package com.example.myapplication;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.PopupMenu;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -12,17 +14,48 @@ import android.widget.Toolbar;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentActivity;
 
-public class activity_info_device extends AppCompatActivity {
+import com.example.myapplication.API.APIClient;
+import com.example.myapplication.API.APIInterface;
+import com.example.myapplication.Model.Asset;
+import com.example.myapplication.Model.infoAsset;
+import com.example.myapplication.adapter.inforAdapter;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.Iterator;
+import java.util.Locale;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
+public class activity_info_device extends FragmentActivity {
+    ListView lvInfo;
+    inforAdapter ifadapter;
+    APIInterface apiInterface;
+    String assetID;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.infodevice);
-
+        Bundle extras = getIntent().getExtras();
+        if (extras != null) {
+            String value = extras.getString("idDevice");
+            assetID=value;
+            //The key argument here must match that used in the other activity
+        }
+         lvInfo=findViewById(R.id.lvInfo);
+        ifadapter=new inforAdapter(activity_info_device.this,R.layout.asset_info_item);
+        lvInfo.setAdapter(ifadapter);
         ImageView iv_back = findViewById(R.id.iv_back);
         ImageView iv_setting = findViewById(R.id.iv_setting);
         TextView title = findViewById(R.id.tv_Info);
-
+        fakeData();
         //tao event click for iv_back
         iv_back.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -40,6 +73,119 @@ public class activity_info_device extends AppCompatActivity {
             }
         });
     }
+
+    private void fakeData() {
+        apiInterface = APIClient.getClient().create(APIInterface.class);
+        Call<Asset> call = apiInterface.getAsset(assetID);//, "Bearer "+ token);
+        call.enqueue(new Callback<Asset>() {
+            @Override
+            public void onResponse(Call<Asset> call, Response<Asset> response) {
+                Log.d("API CALL", response.code()+"");
+                //Log.d ("API CALL", response.toString());
+                Asset asset = response.body();
+
+                Log.d("API CALL", asset.type+"");
+
+
+
+                JsonObject att=asset.attributes;
+
+
+                Log.d("truong", String.valueOf(att.size()));
+                att.keySet().forEach(keyStr ->
+                {
+                    JsonObject keyvalue = att.get(keyStr).getAsJsonObject();
+
+                    Log.d("truong1", keyvalue.get("name").getAsString());
+                    if(keyvalue.get("name").getAsString()!="Xom Pho") {
+                        Double t;
+                        String a,tt;
+                           try {
+
+                               /* t=keyvalue.get("value").getAsDouble();
+                                a=String.valueOf(t);*/
+                               a=keyvalue.get("value").getAsString();
+                            }catch (Exception e)
+                            {
+
+                                a="null";
+                            }
+                            //Log.d("truong2",keyvalue.get("value").getAsString() );
+                        //if(a!="null")
+                            ifadapter.add(new infoAsset(keyvalue.get("name").getAsString(), a));
+
+                    }
+
+                });
+               // a=String.valueOf(key.size());
+               //ifadapter.add(new infoAsset("123",a));
+
+                /*JSONObject objects = new JSONObject ();
+                JSONArray key = objects.names ();
+                for (int i = 0; i < key.length (); ++i) {
+                    String keys = key.getString (i);
+                    String value = objects.getString (keys);
+                }*/
+                /*for (int i=0;i<att.size();i++) {
+                    tt=att.get("name").getAsString();
+                    if(tt=="weatherData") {
+                        continue;
+                    }
+
+
+                  if(att.get("value")!=null)
+                      t=att.get("value").getAsInt();
+                  else {
+                      t=-1;
+                  }
+
+
+                    if(t==-1)
+                    {
+                        a="null";
+                    }
+                    else {
+                        a = String.valueOf(t);
+                    }
+                    ifadapter.add(new infoAsset(tt,a));
+
+                }*/
+               /* t=asset.attributes.get("temperature").getAsJsonObject().get("value").getAsInt();
+                tt=asset.attributes.get("temperature").getAsJsonObject().get("name").getAsString();
+                a=String.valueOf(t);
+                ifadapter.add(new infoAsset(tt,a));
+                t=asset.attributes.get("humidity").getAsJsonObject().get("value").getAsInt();
+                tt=asset.attributes.get("humidity").getAsJsonObject().get("name").getAsString();
+                a=String.valueOf(t);
+                a=a.toUpperCase();
+                tt=asset.attributes.getAsJsonObject().getName.getAsString();
+                ifadapter.add(new infoAsset(tt,a));*/
+
+                /*txtto.setText(a);
+                int h=asset.attributes.get("humidity").getAsJsonObject().get("value").getAsInt();
+                a=String.valueOf(h);
+                txtHum.setText(a);
+                a=asset.attributes.get(weatherData").getAsJsonObject().get("value").getAsJsonObject().get("weather").getAsJsonArray().get(0).getAsJsonObject().get("description").getAsString();
+                txtCL.setText(a);
+                float w=asset.attributes.get("windSpeed").getAsJsonObject().get("value").getAsFloat();
+                a=String.valueOf(w);
+                txtWind.setText(a);*/
+                //txttype.setText(asset.type);
+            }
+
+
+            @Override
+            public void onFailure(Call<Asset> call, Throwable t) {
+                Log.d("API CALL", t.getMessage().toString());
+
+                //t.printStackTrace();
+
+            }
+        });
+
+       // ifadapter.add(new infoAsset("Hoa hồng Huy","18000"));
+    }
+
     private  void showMenu(View v)
     {
         PopupMenu popupMenu = new PopupMenu(this,v );

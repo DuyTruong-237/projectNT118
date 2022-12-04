@@ -22,6 +22,10 @@
         app:layout_constraintVertical_bias="0.0"
         tools:ignore="MissingConstraints,Orientation">
 
+        <ListView
+            android:id="@+id/lvInfo"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
