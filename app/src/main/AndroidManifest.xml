@@ -37,7 +37,7 @@
 
 
         <activity
-            android:name=".MainActivity"
+            android:name=".activity_info_device"
             android:exported="false">
             <meta-data
 
@@ -61,14 +61,14 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".activity_info_device"
+            android:name=".activity_list_Devices"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".activity_list_Devices"
+            android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

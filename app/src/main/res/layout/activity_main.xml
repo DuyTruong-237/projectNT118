@@ -2,10 +2,28 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+
+
+
     android:layout_width="match_parent"
 
     android:layout_height="match_parent"
     tools:context=".MainActivity">
-    
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/viewPager"
+        android:layout_above="@+id/bottom_navi"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_navi"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="#40B6C5"
+        app:itemIconTint="@color/custom_color_item_botnav"
+        app:itemTextColor="@color/custom_color_item_botnav"
+        app:menu="@menu/menu_bottom_nav"></com.google.android.material.bottomnavigation.BottomNavigationView>
+
 
 </RelativeLayout>

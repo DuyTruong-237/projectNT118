@@ -14,6 +14,7 @@ import android.widget.Toolbar;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentActivity;
 
 import com.example.myapplication.API.APIClient;
 import com.example.myapplication.API.APIInterface;
@@ -33,7 +34,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class activity_info_device extends AppCompatActivity {
+public class activity_info_device extends FragmentActivity {
     ListView lvInfo;
     inforAdapter ifadapter;
     APIInterface apiInterface;

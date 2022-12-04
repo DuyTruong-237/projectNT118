@@ -3,13 +3,18 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_margin="16dp"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:layout_marginLeft="16dp"
+    android:layout_marginRight="16dp"
+    android:background="#6BE5F4">
 
     <ListView
+
         android:id="@+id/lvDevices"
         android:layout_width="match_parent"
-        android:layout_height="729dp"
+        android:layout_height="match_parent"
+        android:layout_margin="10dp"
+        android:dividerHeight="10.0sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
