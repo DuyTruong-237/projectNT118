@@ -60,17 +60,9 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
+
         <activity
-<<<<<<< HEAD
-=======
-            android:name=".activity_list_Devices"
-            android:exported="false">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
-        <activity
->>>>>>> origin/truong
+
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>

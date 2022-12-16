@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:layout_marginLeft="16dp"
     android:layout_marginRight="16dp"
-    android:background="#6BE5F4">
+    android:background="@color/mainColor1">
 
     <ListView
 

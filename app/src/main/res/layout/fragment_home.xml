@@ -6,9 +6,9 @@
 
     <LinearLayout
         android:id="@+id/firstcont"
-        android:layout_width="115dp"
+        android:layout_width="120dp"
         android:layout_height="180dp"
-        android:layout_marginLeft="10dp"
+        android:layout_marginLeft="20dp"
         android:layout_marginTop="30dp"
         android:background="@drawable/custom_contentwrapper"
         android:orientation="vertical">
@@ -21,7 +21,7 @@
            android:textAlignment="center"
             android:text="00"
             android:textColor="#fff"
-            android:textSize="60dp" />
+            android:textSize="50dp" />
 
         <TextView
 
@@ -31,18 +31,18 @@
             android:textAlignment="center"
             android:text="Độ"
             android:textColor="#fff"
-            android:textSize="60dp" />
+            android:textSize="40dp" />
     </LinearLayout>
 
     <LinearLayout
         android:id="@+id/weather"
-        android:layout_width="210dp"
+        android:layout_width="220dp"
         android:layout_height="180dp"
         android:layout_alignRight="@+id/firstcont"
         android:layout_alignParentRight="true"
-        android:layout_marginLeft="20dp"
+        android:layout_marginLeft="15dp"
         android:layout_marginTop="30dp"
-        android:layout_marginRight="10dp"
+        android:layout_marginRight="20dp"
         android:background="@drawable/custom_contentwrapper"
 
 
@@ -68,11 +68,11 @@
 
     <ImageView
         android:id="@+id/mapButton"
-        android:layout_width="match_parent"
+        android:layout_width="400dp"
         android:layout_height="200dp"
         android:layout_below="@+id/weather"
         android:layout_centerHorizontal="true"
-        android:layout_marginLeft="10dp"
+        android:layout_marginLeft="20dp"
         android:layout_marginTop="10dp"
         android:layout_marginRight="20dp"
         android:background="@drawable/custom_contentwrapper"></ImageView>
@@ -82,8 +82,8 @@
         android:layout_width="180dp"
         android:layout_height="80dp"
         android:layout_below="@+id/mapButton"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="22dp"
         android:background="@drawable/custom_contentwrapper"
         android:orientation="horizontal">
 
@@ -105,7 +105,7 @@
             android:layout_marginTop="8dp"
             android:text="00"
             android:textColor="#fff"
-            android:textSize="45dp" />
+            android:textSize="40dp" />
     </LinearLayout>
 
     <LinearLayout
@@ -113,7 +113,7 @@
         android:layout_width="180dp"
         android:layout_height="80dp"
         android:layout_below="@+id/uv"
-        android:layout_marginLeft="10dp"
+        android:layout_marginLeft="20dp"
         android:layout_marginTop="20dp"
         android:background="@drawable/custom_contentwrapper"
         android:orientation="horizontal">
@@ -136,20 +136,20 @@
             android:layout_marginTop="10dp"
             android:text="00"
             android:textColor="#fff"
-            android:textSize="40dp" />
+            android:textSize="35dp" />
     </LinearLayout>
 
 
     <LinearLayout
         android:id="@+id/lastcontent"
 
-        android:layout_width="150dp"
-        android:layout_height="180dp"
+        android:layout_width="160dp"
+        android:layout_height="190dp"
         android:layout_below="@+id/mapButton"
         android:layout_alignParentRight="true"
         android:layout_marginLeft="20dp"
         android:layout_marginTop="20dp"
-        android:layout_marginRight="10dp"
+        android:layout_marginRight="20dp"
         android:layout_marginBottom="20dp"
         android:background="@drawable/custom_contentwrapper"
         android:orientation="vertical">
@@ -171,7 +171,7 @@
             android:layout_marginLeft="30dp"
             android:text="00"
             android:textColor="#fff"
-            android:textSize="80dp" />
+            android:textSize="70dp" />
 
     </LinearLayout>
 
