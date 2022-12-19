@@ -38,22 +38,33 @@ public class activity_info_device extends FragmentActivity {
     ListView lvInfo;
     inforAdapter ifadapter;
     APIInterface apiInterface;
+<<<<<<< HEAD
 
     String assetID;
 
+=======
+    String assetID;
+>>>>>>> origin/truong
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.infodevice);
+<<<<<<< HEAD
 
+=======
+>>>>>>> origin/truong
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
             String value = extras.getString("idDevice");
             assetID=value;
             //The key argument here must match that used in the other activity
         }
+<<<<<<< HEAD
          lvInfo=findViewById(R.id.lv_Info);
 
+=======
+         lvInfo=findViewById(R.id.lvInfo);
+>>>>>>> origin/truong
         ifadapter=new inforAdapter(activity_info_device.this,R.layout.asset_info_item);
         lvInfo.setAdapter(ifadapter);
         ImageView iv_back = findViewById(R.id.iv_back);
