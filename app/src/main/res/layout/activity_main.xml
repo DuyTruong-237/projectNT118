@@ -20,7 +20,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:background="#40B6C5"
+        android:background="@color/gray"
         app:itemIconTint="@color/custom_color_item_botnav"
         app:itemTextColor="@color/custom_color_item_botnav"
         app:menu="@menu/menu_bottom_nav"></com.google.android.material.bottomnavigation.BottomNavigationView>
