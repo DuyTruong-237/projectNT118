@@ -31,12 +31,12 @@ public class deviceAdapter extends ArrayAdapter<Device_item> {
         View customView=indlafter.inflate(this.resource,null);
 
         TextView txtTitle=customView.findViewById(R.id.txtTitle);
-        TextView txtGia=customView.findViewById(R.id.txtInfo);
+        TextView txtInfo=customView.findViewById(R.id.txtInfo);
 
         Device_item info=getItem(position);
 
         txtTitle.setText(info.getTitle());
-        txtGia.setText(info.getInfo());
+        txtInfo.setText(info.getInfo());
         return customView;
     }
 }
