@@ -15,13 +15,13 @@ public class load extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.load);
 
         moveActivity();
     }
 
     private void moveActivity() {
-        CountDownTimer countDownTimert=new CountDownTimer(5000,1000) {
+        CountDownTimer countDownTimert=new CountDownTimer(2000,1000) {
             @Override
             public void onTick(long l) {
 
@@ -30,7 +30,7 @@ public class load extends AppCompatActivity {
             @Override
             public void onFinish() {
 
-                Intent intent = new Intent(load.this,MenuActivity.class );
+                Intent intent = new Intent(load.this,activity_login.class );
                 startActivity(intent);
             }
         };

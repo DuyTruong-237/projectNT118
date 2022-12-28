@@ -6,6 +6,10 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+<<<<<<< HEAD
+=======
+import android.widget.AdapterView;
+>>>>>>> truong
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -21,6 +25,7 @@ import androidx.fragment.app.FragmentActivity;
 import com.example.myapplication.API.APIClient;
 import com.example.myapplication.API.APIInterface;
 import com.example.myapplication.Model.Asset;
+import com.example.myapplication.Model.Device_item;
 import com.example.myapplication.Model.infoAsset;
 import com.example.myapplication.adapter.inforAdapter;
 import com.google.gson.JsonArray;
@@ -39,6 +44,7 @@ import retrofit2.Response;
 
 public class activity_info_device extends FragmentActivity {
     ListView lvInfo;
+    Button btn;
     inforAdapter ifadapter;
     APIInterface apiInterface;
     String assetID;
@@ -47,6 +53,7 @@ public class activity_info_device extends FragmentActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.infodevice);
+        btn=findViewById(R.id.btndetail);
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
             String value = extras.getString("idDevice");
@@ -76,6 +83,14 @@ public class activity_info_device extends FragmentActivity {
                 showMenu(view);
             }
         });
+        btn.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                Intent intent = new Intent(activity_info_device.this,asset_detailActivity.class );
+                startActivity(intent);
+            }
+        });
+
     }
     
     private void fakeData() {
