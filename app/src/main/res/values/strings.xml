@@ -1,11 +1,9 @@
 <resources>
     <string name="app_name">My Application</string>
-=======
->>>>>>> origin/truong
+
     <string name="title_activity_main2">MainActivity2</string>
-=======
+
     <string name="title_activity_info_list">activity_info_list</string>
->>>>>>> nhi
     <!-- Strings used for fragments for navigation -->
     <string name="first_fragment_label">First Fragment</string>
     <string name="second_fragment_label">Second Fragment</string>
@@ -13,9 +11,6 @@
     <string name="previous">Previous</string>
 
     <string name="token">pk.eyJ1IjoicGF0dWFuYXMiLCJhIjoiY2xiMDlqNXpjMWc2MzNwbG5zNjFtZTJrYSJ9.doV1xr8TtmerKMLjcLrPeg</string>
-=======
-
->>>>>>> nhi
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
 </resources>

@@ -12,8 +12,6 @@
         android:layout_height="300dp"
         android:layout_centerHorizontal="true"
         android:layout_alignParentBottom="true"
-
-
         />
 
     <ProgressBar
