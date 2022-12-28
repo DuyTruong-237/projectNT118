@@ -18,6 +18,7 @@ import android.widget.Toolbar;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.ViewParentCompat;
 import androidx.fragment.app.FragmentActivity;
 
 import com.example.myapplication.API.APIClient;
@@ -69,7 +70,10 @@ public class activity_info_device extends FragmentActivity {
         iv_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(activity_info_device.this, "Back", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(activity_info_device.this, "Back", Toast.LENGTH_SHORT).show();
+                /*ntent intent = new Intent(activity_info_device.this, back);
+                startActivity(intent);*/
+                finish();
             }
         });
 
