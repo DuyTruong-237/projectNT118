@@ -6,10 +6,8 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-<<<<<<< HEAD
-=======
 import android.widget.AdapterView;
->>>>>>> truong
+
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;

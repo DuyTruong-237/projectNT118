@@ -17,15 +17,15 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-<<<<<<< HEAD
+
 
 
 import com.example.myapplication.API.APIClient;
 import com.example.myapplication.API.APIInterface;
 import com.example.myapplication.Model.Map;
-=======
+
 import com.example.myapplication.Model.Device_item;
->>>>>>> truong
+
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.mapbox.geojson.Point;
@@ -40,8 +40,7 @@ import com.mapbox.mapboxsdk.maps.OnMapReadyCallback;
 import com.mapbox.mapboxsdk.maps.Style;
 import com.mapbox.mapboxsdk.module.http.HttpRequestUtil;
 
-<<<<<<< HEAD
-=======
+
 import com.example.myapplication.API.APIClient;
 import com.example.myapplication.API.APIInterface;
 import com.example.myapplication.Model.Map;
@@ -54,7 +53,6 @@ import com.mapbox.mapboxsdk.style.sources.GeoJsonSource;
 import java.util.ArrayList;
 import java.util.List;
 
->>>>>>> truong
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
