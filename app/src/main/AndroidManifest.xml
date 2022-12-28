@@ -28,6 +28,13 @@
                 android:value="" />
         </activity>
         <activity
+            android:name=".MainActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".activity_login"
             android:exported="false">
             <meta-data
@@ -68,7 +75,14 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".MainActivity"
+            android:name=".asset_detailActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".load"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
