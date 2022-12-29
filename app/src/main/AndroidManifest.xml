@@ -45,6 +45,7 @@
 
         <activity
             android:name=".activity_info_device"
+            android:parentActivityName=".activity_list_Devices"
             android:exported="false">
             <meta-data
 
