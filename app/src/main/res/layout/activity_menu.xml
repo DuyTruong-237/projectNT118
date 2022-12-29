@@ -71,7 +71,9 @@
         android:layout_marginTop="20dp"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
-        android:background="@drawable/custom_contentwrapper"></ImageView>
+        android:background="@drawable/custom_contentwrapper">
+
+    </ImageView>
 
     <LinearLayout
         android:id="@+id/uv"
