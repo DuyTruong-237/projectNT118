@@ -7,12 +7,9 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="blurry_white">#75FFFFFF</color>
-    <color name="mainColor1">#BBD8F2</color>
-    <color name="maincolor2">#716DF2</color>
-    <color name="mainColor3">#A0B4F2</color>
-    <color name="purple_100">#E8D5FF</color>
-    <color name="gray">#787776</color>
+    <color name="mainColor1">#EA6339</color>
+    <color name="maincolor2">#FDE2CA</color>
+    <color name="gray">#DA7C460C</color>
     <color name="infoColor">#FDF5E6</color>
 
 </resources>
