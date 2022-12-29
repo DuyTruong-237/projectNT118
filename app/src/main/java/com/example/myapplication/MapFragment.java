@@ -187,12 +187,12 @@ public class MapFragment extends Fragment {
 // Use the manager to draw the symbol.
         symbol = symbolManager.create(symbolOptions);
     }*/
-    private void getData(String idAsset) {
+    private void getData(String idAsset1) {
 
 
         apiInterface = APIClient.getClient().create(APIInterface.class);
 
-        Call<Asset> call = apiInterface.getAsset(idAsset);//, "Bearer "+ token);
+        Call<Asset> call = apiInterface.getAsset(idAsset1);//, "Bearer "+ token);
         call.enqueue(new Callback<Asset>() {
             @Override
             public void onResponse(Call<Asset> call, Response<Asset> response) {
@@ -225,7 +225,7 @@ public class MapFragment extends Fragment {
                     public void onClick(View v)
                     {
                         Intent i = new Intent(getActivity(), activity_info_device.class);
-                        i.putExtra("idDevice",idAsset);
+                        i.putExtra("idDevice",idAsset1);
                         startActivity(i);
                     }
                 });

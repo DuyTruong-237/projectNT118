@@ -55,7 +55,7 @@ public class activity_info_device extends FragmentActivity {
             assetID=value;
             //The key argument here must match that used in the other activity
         }
-         lvInfo=findViewById(R.id.lvDevices);
+         lvInfo=findViewById(R.id.lvInfo);
         ifadapter=new inforAdapter(activity_info_device.this,R.layout.asset_info_item);
         lvInfo.setAdapter(ifadapter);
         ImageView iv_back = findViewById(R.id.iv_back);
