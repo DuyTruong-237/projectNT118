@@ -16,6 +16,7 @@ import android.view.ViewGroup;
 import android.widget.Adapter;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -23,7 +24,9 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.constraintlayout.helper.widget.Carousel;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.myapplication.Model.Animation;
 import com.example.myapplication.Model.Asset;
 import com.example.myapplication.Model.Device_item;
 import com.example.myapplication.Model.infoAsset;
@@ -65,8 +68,10 @@ public class MapFragment extends Fragment {
     private TextView txtTitle;
     private ListView lv1;
     private ListView lv2;
+    private RecyclerView rcv1;
     private  TextView txt1,txt2,txt3;
     private Button btn;
+    private RelativeLayout info;
     inforAdapter ifadapter;
     private GeoJsonSource geoJsonSource;
     private Marker destinationMarker;
@@ -100,12 +105,16 @@ public class MapFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         HttpRequestUtil.setOkHttpClient(APIClient.getUnsafeOkHttpClient());
 
+        info = view.findViewById(R.id.infoView);
         mapView = view.findViewById(R.id.mapView);
+        rcv1 = view.findViewById(R.id.rcv1);
         txtTitle=view.findViewById(R.id.title);
         txt1=view.findViewById(R.id.txt1);
         txt2=view.findViewById(R.id.txt2);
         txt3=view.findViewById(R.id.txt3);
         btn=view.findViewById(R.id.btn1);
+
+        //rcv1.setOnScrollChangeListener(new Animation(getActivity(), info));
 
         callAssetLocation();
         event();
@@ -219,7 +228,9 @@ public class MapFragment extends Fragment {
                 float w=asset.attributes.get("windSpeed").getAsJsonObject().get("value").getAsFloat();
                 a=String.valueOf(w);
                 txt3.setText("windSpeed: "+w);
-                btn.setOnClickListener(new View.OnClickListener()
+
+
+               btn.setOnClickListener(new View.OnClickListener()
                 {
                     @Override
                     public void onClick(View v)
@@ -227,7 +238,7 @@ public class MapFragment extends Fragment {
                         Intent i = new Intent(getActivity(), activity_info_device.class);
                         i.putExtra("idDevice",idAsset);
                         startActivity(i);
-                    }
+
                 });
 
 
