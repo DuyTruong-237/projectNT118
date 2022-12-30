@@ -222,7 +222,7 @@ public class MapFragment extends Fragment {
 
                 float w=asset.attributes.get("windSpeed").getAsJsonObject().get("value").getAsFloat();
                 a=String.valueOf(w);
-                txt3.setText("windSpeed: "+w);
+                txt3.setText("WindSpeed: "+w);
                 btn.setOnClickListener(new View.OnClickListener()
                 {
                     @Override
