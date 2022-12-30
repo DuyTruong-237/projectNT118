@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="@color/mainColor1"
+    android:background="@drawable/custom_background_gradiently"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
     <androidx.viewpager.widget.ViewPager
