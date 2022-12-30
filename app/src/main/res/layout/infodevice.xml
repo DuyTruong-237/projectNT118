@@ -21,7 +21,7 @@
             android:id="@+id/lvInfo"
             android:layout_width="match_parent"
             android:layout_height="550dp"
-            android:background="@color/background" />
+            android:background="@color/mainColor1" />
 
     </LinearLayout>
 
