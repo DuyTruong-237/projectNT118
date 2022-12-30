@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@drawable/custom_background_login">
 
     <ImageView
         android:id="@+id/logoLogin"
@@ -21,7 +22,7 @@
         android:layout_marginTop="60dp"
         android:layout_centerHorizontal="true"
         android:text="Đăng nhập"
-        android:textColor="@color/mainColor1"
+        android:textColor="@color/maincolor2"
         android:textSize="30dp"
         android:textStyle="bold" />
     <EditText
