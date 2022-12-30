@@ -7,14 +7,17 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Temperature"
-        android:textSize="40dp"
+        android:gravity="center"
+        android:fontFamily="serif-monospace"
+        android:textColor="@color/maincolor2"
+        android:textStyle="bold"
+        android:textSize="50dp"
         android:layout_marginBottom="20px"
         />
     <com.github.mikephil.charting.charts.LineChart
         android:layout_below="@+id/txtTitle"
         android:id="@+id/chart"
         android:layout_width="match_parent"
+        android:background="@color/blurry_white"
         android:layout_height="250dp" />
-
-
 </RelativeLayout>
