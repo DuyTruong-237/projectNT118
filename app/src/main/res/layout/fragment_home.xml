@@ -8,7 +8,7 @@
     <LinearLayout
         android:id="@+id/weather"
         android:layout_width="match_parent"
-        android:layout_height="250dp"
+        android:layout_height="240dp"
         android:layout_alignParentRight="true"
         android:layout_marginLeft="20dp"
         android:layout_marginTop="100dp"
@@ -43,7 +43,7 @@
         android:layout_below="@+id/weather"
         android:layout_alignParentRight="true"
         android:layout_marginLeft="20dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="20dp"
         android:layout_marginRight="10dp"
         android:layout_marginBottom="20dp"
         android:background="@drawable/custom_contentwrapper"
@@ -79,7 +79,7 @@
         android:layout_height="200dp"
         android:layout_below="@+id/weather"
         android:layout_marginLeft="20dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="20dp"
         android:layout_marginRight="10dp"
         android:background="@drawable/custom_contentwrapper"
         android:foreground="#6FFFFFFF"
@@ -126,7 +126,7 @@
         android:layout_height="90dp"
         android:layout_below="@+id/uv"
         android:layout_marginLeft="20dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="20dp"
         android:background="@drawable/custom_contentwrapper"
         android:orientation="horizontal">
 
@@ -134,12 +134,12 @@
             android:layout_width="wrap_content"
             android:layout_height="fill_parent"
             android:layout_marginLeft="20dp"
+            android:fontFamily="serif-monospace"
             android:gravity="center"
             android:text="m/s"
             android:textColor="@color/maincolor2"
-            android:fontFamily="serif-monospace"
-            android:textStyle="bold"
-            android:textSize="40dp" />
+            android:textSize="40dp"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/txtWind"
@@ -161,7 +161,7 @@
         android:layout_alignParentRight="true"
         android:layout_below="@+id/mapButton"
         android:layout_marginRight="10dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="20dp"
         android:background="@drawable/custom_contentwrapper"
         android:orientation="horizontal">
 

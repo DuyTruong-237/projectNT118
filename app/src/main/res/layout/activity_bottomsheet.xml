@@ -5,7 +5,7 @@
     <RelativeLayout
         android:id="@+id/bottomSheetContainer"
         android:layout_width="match_parent"
-        android:layout_height="350dp"
+        android:layout_height="300dp"
         android:background="@color/white"
         android:layout_gravity="bottom"
         >
@@ -28,35 +28,51 @@
             android:gravity="center"
             android:textColor="@color/black"
             android:layout_marginTop="15dp"
-            android:layout_marginLeft="20dp"
+            android:layout_marginLeft="15dp"
             android:id="@+id/txt1"
             android:layout_below="@+id/txttitle3"
-            android:layout_width="match_parent"
-            android:layout_marginRight="20dp"
+            android:layout_width="160dp"
+            android:layout_marginRight="15dp"
             android:layout_height="50dp"/>
+
         <TextView
-            android:textSize="20dp"
-            android:gravity="center"
-            android:textColor="@color/black"
-            android:layout_marginTop="15dp"
             android:id="@+id/txt2"
-            android:layout_below="@+id/txt1"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"/>
+            android:layout_width="160dp"
+            android:layout_height="50dp"
+            android:layout_below="@+id/txttitle3"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_alignParentRight="true"
+            android:gravity="center"
+            android:textColor="@color/black"
+            android:textSize="20dp" />
+
         <TextView
             android:textSize="20dp"
             android:gravity="center"
             android:textColor="@color/black"
             android:layout_marginTop="15dp"
-            android:layout_marginRight="20dp"
-            android:layout_marginLeft="20dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginLeft="15dp"
             android:id="@+id/txt3"
-            android:layout_alignParentRight="true"
-            android:layout_below="@+id/txt2"
-            android:layout_width="match_parent"
+
+            android:layout_below="@+id/txt1"
+            android:layout_width="160dp"
             android:layout_height="50dp"/>
+
+        <TextView
+            android:id="@+id/txt4"
+            android:layout_width="160dp"
+            android:layout_height="50dp"
+            android:layout_below="@+id/txt2"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_alignParentRight="true"
+            android:gravity="center"
+            android:textColor="@color/black"
+            android:textSize="20dp" />
 
         <Button
             android:id="@+id/btn1"
@@ -67,7 +83,7 @@
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:layout_marginStart="130dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="25dp"
             android:layout_marginRight="130dp"
             android:background="@color/maincolor2"
             android:text="View more"
