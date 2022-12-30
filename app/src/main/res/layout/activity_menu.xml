@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/custom_nightcloudysky_radiusly">
+    android:background="@drawable/custom_background_gradiently">
 
     <LinearLayout
         android:id="@+id/firstcont"
@@ -47,7 +47,7 @@
             android:layout_marginTop="10dp"
             android:src="@drawable/nang"/>
         <TextView
-           android:id="@+id/txtClouds"
+            android:id="@+id/txtClouds"
             android:text=""
             android:textSize="45dp"
             android:textColor="@color/mainColor3"

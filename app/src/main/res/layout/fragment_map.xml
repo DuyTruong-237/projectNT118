@@ -3,32 +3,33 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/blurry_pastel_blue"
     tools:context=".MapFragment">
-
+    <include layout="@layout/activity_map_toolbar"></include>
     <com.mapbox.mapboxsdk.maps.MapView
         android:id="@+id/mapView"
         android:layout_width="match_parent"
+        android:layout_marginTop="70dp"
         android:layout_height="match_parent">
-
-
     </com.mapbox.mapboxsdk.maps.MapView>
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="250dp"
         android:background="@drawable/custom_contentwrapper"
         android:layout_gravity="bottom"
-
-
         >
         <TextView
             android:id="@+id/title"
             android:layout_width="match_parent"
-            android:text="Trường đại học công nghệ thông tin"
+            android:text="UIT Map Information"
+            android:gravity="center"
             android:textSize="30dp"
-            android:textAlignment="center"
-            android:layout_height="80dp"/>
+            android:fontFamily="serif-monospace"
+            android:textStyle="bold"
+            android:textColor="@color/maincolor2"
+            android:layout_height="40dp"/>
         <TextView
-            android:text="Tehsdahfhda"
+            android:text=""
             android:textSize="20dp"
             android:layout_marginTop="20dp"
             android:id="@+id/txt1"

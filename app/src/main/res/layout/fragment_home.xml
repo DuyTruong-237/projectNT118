@@ -2,7 +2,8 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/custom_nightcloudysky_radiusly">
+    android:background= "@drawable/custom_background_gradiently">
+    <include layout = "@layout/activity_home_toolbar"/>
 
     <LinearLayout
         android:id="@+id/weather"
@@ -10,24 +11,19 @@
         android:layout_height="250dp"
         android:layout_alignParentRight="true"
         android:layout_marginLeft="20dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="100dp"
         android:layout_marginRight="20dp"
-        android:background="@drawable/custom_contentwrapper"
+        android:background="@drawable/night_cloudy_scene"
         android:orientation="vertical">
-
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="140dp"
-            android:src="@drawable/may" />
 
         <TextView
             android:id="@+id/txtClouds"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="25dp"
+            android:layout_height="match_parent"
+            android:gravity="center"
             android:text="Cloud"
             android:textAlignment="center"
-            android:textColor="@color/maincolor2"
+            android:textColor="#F7FFFFFF"
             android:fontFamily="serif-monospace"
             android:textStyle="bold"
             android:textSize="40dp" />
@@ -37,9 +33,9 @@
 
     <LinearLayout
         android:id="@+id/firstcont"
-        android:layout_width="175dp"
+        android:layout_width="180dp"
         android:layout_height="90dp"
-        android:layout_below="@+id/mapButton"
+        android:layout_below="@+id/weather"
         android:layout_alignParentRight="true"
         android:layout_marginLeft="20dp"
         android:layout_marginTop="30dp"
@@ -51,7 +47,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="fill_parent"
-            android:layout_marginLeft="10dp"
+            android:layout_marginLeft="25dp"
             android:gravity="center"
             android:text="°C"
             android:textColor="@color/maincolor2"
@@ -61,7 +57,7 @@
 
         <TextView
             android:id="@+id/txtT"
-            android:layout_marginLeft="50dp"
+            android:layout_marginLeft="35dp"
             android:text="00"
             android:textSize="40dp"
             android:textColor="@color/maincolor2"
@@ -74,40 +70,42 @@
 
     <ImageView
         android:id="@+id/mapButton"
-        android:layout_width="match_parent"
-        android:layout_height="110dp"
+        android:layout_width="180dp"
+        android:layout_height="200dp"
         android:layout_below="@+id/weather"
         android:layout_marginLeft="20dp"
         android:layout_marginTop="30dp"
         android:layout_marginRight="20dp"
-        android:background="@drawable/custom_contentwrapper"></ImageView>
+        android:background="@drawable/ic_map"
+        android:orientation="horizontal">
+    </ImageView>
 
     <LinearLayout
         android:id="@+id/uv"
-        android:layout_width="175dp"
+        android:layout_width="180dp"
         android:layout_height="90dp"
-        android:layout_below="@+id/mapButton"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="30dp"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/firstcont"
+        android:layout_marginRight="20dp"
         android:background="@drawable/custom_contentwrapper"
         android:orientation="horizontal">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="fill_parent"
-            android:layout_marginLeft="10dp"
-            android:text="UV"
-            android:gravity="center"
-            android:textColor="@color/maincolor2"
+            android:layout_marginLeft="30dp"
             android:fontFamily="serif-monospace"
-            android:textStyle="bold"
-            android:textSize="40dp" />
+            android:gravity="center"
+            android:text="UV"
+            android:textColor="@color/maincolor2"
+            android:textSize="40dp"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/txtUV"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="60dp"
+            android:layout_marginLeft="30dp"
             android:fontFamily="serif-monospace"
             android:gravity="center"
             android:text="00"
@@ -118,20 +116,20 @@
 
     <LinearLayout
         android:id="@+id/wind"
-        android:layout_width="175dp"
+        android:layout_width="180dp"
         android:layout_height="90dp"
         android:layout_below="@+id/uv"
         android:layout_marginLeft="20dp"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="30dp"
         android:background="@drawable/custom_contentwrapper"
         android:orientation="horizontal">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="fill_parent"
-            android:layout_marginLeft="10dp"
+            android:layout_marginLeft="20dp"
             android:gravity="center"
-            android:text="Wind"
+            android:text="m/s"
             android:textColor="@color/maincolor2"
             android:fontFamily="serif-monospace"
             android:textStyle="bold"
@@ -141,30 +139,31 @@
             android:id="@+id/txtWind"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="10dp"
             android:text="00"
             android:textColor="@color/maincolor2"
-            android:fontFamily="serif-monospace"
+            android:fontFamily="sans-serif-thin"
             android:textStyle="bold"
-            android:textSize="40dp" />
+            android:textSize="35dp" />
     </LinearLayout>
 
 
     <LinearLayout
         android:id="@+id/lastcontent"
-        android:layout_width="175dp"
+        android:layout_width="180dp"
         android:layout_height="90dp"
-        android:layout_below="@+id/uv"
         android:layout_alignParentRight="true"
+        android:layout_below="@+id/mapButton"
         android:layout_marginRight="20dp"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="30dp"
         android:background="@drawable/custom_contentwrapper"
         android:orientation="horizontal">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="fill_parent"
-            android:layout_marginLeft="10dp"
+            android:layout_marginLeft="30dp"
             android:gravity="center"
             android:text="%H"
             android:textColor="@color/maincolor2"
@@ -176,7 +175,7 @@
             android:id="@+id/txtHum"
             android:layout_width="wrap_content"
             android:layout_height="fill_parent"
-            android:layout_marginLeft="50dp"
+            android:layout_marginLeft="30dp"
             android:gravity="center"
             android:text="00"
             android:textColor="@color/maincolor2"

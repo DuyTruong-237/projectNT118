@@ -13,9 +13,8 @@
             android:id="@+id/iv_back"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_back"
+            android:src="@drawable/ic_home"
             android:layout_centerVertical="true">
-
         </ImageView>
 
         <TextView
@@ -23,10 +22,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_toEndOf="@+id/iv_back"
-            android:layout_marginLeft="10dp"
             android:textColor="@color/white"
+            android:layout_marginLeft="10dp"
             android:textSize="20dp"
-            android:text="Bản đồ UIT"
+            android:text="Trang chủ"
             android:layout_centerVertical="true"/>
 
         <ImageView
