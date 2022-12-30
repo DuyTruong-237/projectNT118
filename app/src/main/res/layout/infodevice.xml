@@ -13,7 +13,7 @@
         android:layout_marginTop="70dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/custom_info_device"
+        android:background="@color/white"
         android:layout_alignParentTop="true"
         tools:ignore="MissingConstraints,Orientation">
 
