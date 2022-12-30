@@ -13,11 +13,18 @@
         android:layout_height="match_parent">
     </com.mapbox.mapboxsdk.maps.MapView>
     <RelativeLayout
+        android:id="@+id/infoView"
         android:layout_width="match_parent"
         android:layout_height="250dp"
         android:background="@drawable/custom_contentwrapper"
         android:layout_gravity="bottom"
         >
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/rcv1">
+
+        </androidx.recyclerview.widget.RecyclerView>
         <TextView
             android:id="@+id/title"
             android:layout_width="match_parent"
