@@ -7,6 +7,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -17,6 +18,7 @@ import android.widget.Toolbar;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.ViewParentCompat;
 import androidx.fragment.app.FragmentActivity;
 
 import com.example.myapplication.API.APIClient;
@@ -31,6 +33,7 @@ import com.google.gson.JsonObject;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Locale;
 
@@ -44,6 +47,7 @@ public class activity_info_device extends FragmentActivity {
     inforAdapter ifadapter;
     APIInterface apiInterface;
     String assetID;
+    Button Backbtn;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,7 +59,7 @@ public class activity_info_device extends FragmentActivity {
             assetID=value;
             //The key argument here must match that used in the other activity
         }
-         lvInfo=findViewById(R.id.lvDevices);
+         lvInfo=findViewById(R.id.lvInfo);
         ifadapter=new inforAdapter(activity_info_device.this,R.layout.asset_info_item);
         lvInfo.setAdapter(ifadapter);
         ImageView iv_back = findViewById(R.id.iv_back);
@@ -66,7 +70,10 @@ public class activity_info_device extends FragmentActivity {
         iv_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(activity_info_device.this, "Back", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(activity_info_device.this, "Back", Toast.LENGTH_SHORT).show();
+                /*ntent intent = new Intent(activity_info_device.this, back);
+                startActivity(intent);*/
+                finish();
             }
         });
 
@@ -87,7 +94,7 @@ public class activity_info_device extends FragmentActivity {
         });
 
     }
-
+    
     private void fakeData() {
         apiInterface = APIClient.getClient().create(APIInterface.class);
         Call<Asset> call = apiInterface.getAsset(assetID);//, "Bearer "+ token);
