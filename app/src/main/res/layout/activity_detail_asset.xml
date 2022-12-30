@@ -8,10 +8,8 @@
         android:layout_height="wrap_content"
         android:text="Temperature"
         android:gravity="center"
-        android:fontFamily="serif-monospace"
         android:textColor="@color/maincolor2"
-        android:textStyle="bold"
-        android:textSize="50dp"
+        android:textSize="40dp"
         android:layout_marginBottom="20px"
         />
     <com.github.mikephil.charting.charts.LineChart

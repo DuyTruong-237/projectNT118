@@ -25,6 +25,7 @@
             android:layout_toEndOf="@+id/iv_back"
             android:textColor="@color/white"
             android:textSize="20dp"
+            android:layout_marginLeft="10dp"
             android:text="Thông tin thiết bị truy cập"
             android:layout_centerVertical="true"/>
 

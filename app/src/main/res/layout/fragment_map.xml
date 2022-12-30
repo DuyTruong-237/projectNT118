@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/blurry_pastel_blue"
+    android:background="@drawable/custom_background_gradiently"
     tools:context=".MapFragment">
     <include layout="@layout/activity_map_toolbar"></include>
     <com.mapbox.mapboxsdk.maps.MapView
