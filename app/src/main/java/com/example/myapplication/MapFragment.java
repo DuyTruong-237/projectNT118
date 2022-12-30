@@ -15,7 +15,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Adapter;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -29,6 +31,7 @@ import com.example.myapplication.Model.Device_item;
 import com.example.myapplication.Model.infoAsset;
 import com.example.myapplication.adapter.inforAdapter;
 import com.google.android.gms.maps.GoogleMap;
+import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.mapbox.geojson.Point;
@@ -66,6 +69,7 @@ public class MapFragment extends Fragment {
     private ListView lv1;
     private ListView lv2;
     private  TextView txt1,txt2,txt3;
+    private RelativeLayout bottomSheet;
     private Button btn;
     inforAdapter ifadapter;
     private GeoJsonSource geoJsonSource;
@@ -101,11 +105,11 @@ public class MapFragment extends Fragment {
         HttpRequestUtil.setOkHttpClient(APIClient.getUnsafeOkHttpClient());
 
         mapView = view.findViewById(R.id.mapView);
-        txtTitle=view.findViewById(R.id.title);
-        txt1=view.findViewById(R.id.txt1);
-        txt2=view.findViewById(R.id.txt2);
-        txt3=view.findViewById(R.id.txt3);
-        btn=view.findViewById(R.id.btn1);
+        //txtTitle=view.findViewById(R.id.title);
+        //txt1=view.findViewById(R.id.txt1);
+        //txt2=view.findViewById(R.id.txt2);
+        //txt3=view.findViewById(R.id.txt3);
+        //btn=view.findViewById(R.id.btn1);
 
         callAssetLocation();
         event();
@@ -170,7 +174,7 @@ public class MapFragment extends Fragment {
         }
     }
    /* private void addmaker()
-            
+
     {
         SymbolManager symbolManager = new SymbolManager(mapView, mapboxMap, style);
 
@@ -200,7 +204,7 @@ public class MapFragment extends Fragment {
                 //Log.d ("API CALL", response.toString());
                 Asset asset = response.body();
                 txtTitle.setText(asset.name);
-                Log.d("API CALL", asset.type+"");
+                Log.d("truong", txtTitle.getText()+"");
 
 
 
@@ -214,7 +218,7 @@ public class MapFragment extends Fragment {
                 a=String.valueOf(h);
                 txt2.setText("Humidity: "+a);
 
-               // a=asset.attributes.get("weatherData").getAsJsonObject().get("value").getAsJsonObject().get("weather").getAsJsonArray().get(0).getAsJsonObject().get("description").getAsString();
+                // a=asset.attributes.get("weatherData").getAsJsonObject().get("value").getAsJsonObject().get("weather").getAsJsonArray().get(0).getAsJsonObject().get("description").getAsString();
 
                 float w=asset.attributes.get("windSpeed").getAsJsonObject().get("value").getAsFloat();
                 a=String.valueOf(w);
@@ -227,6 +231,7 @@ public class MapFragment extends Fragment {
                         Intent i = new Intent(getActivity(), activity_info_device.class);
                         i.putExtra("idDevice",idAsset);
                         startActivity(i);
+
                     }
                 });
 
@@ -303,18 +308,18 @@ public class MapFragment extends Fragment {
                     //.zoom(myMap.options.get("default").getAsJsonObject().get("zoom").getAsInt())
                     .zoom(16.8)
                     .build());
-           // Log.d("sizeARRLkkkk", String.valueOf(String.valueOf(arrLLasset.get(0).getLatitude())));
+            // Log.d("sizeARRLkkkk", String.valueOf(String.valueOf(arrLLasset.get(0).getLatitude())));
             //Log.d("sizeARRLkkkk", String.valueOf(String.valueOf(arrLLasset.get(1).getLatitude())));
-          //  Log.d("sizeARRLkkkk", String.valueOf(String.valueOf(arrLLasset.get(2).getLatitude())));
+            //  Log.d("sizeARRLkkkk", String.valueOf(String.valueOf(arrLLasset.get(2).getLatitude())));
 
             Log.d("sizeARRLkkkk", String.valueOf(arrLLasset.size()));
             LatLng item;
-               for (int j=0;j<arrLLasset.size();j++) {
-                   item=new LatLng(arrlat.get(j),arrlng.get(j));
-                   Log.d("sizeARRLkkkk"+j, String.valueOf(String.valueOf(arrLLasset.get(j).getLatitude())));
-                  destinationMarker = mapboxMap.addMarker( new MarkerOptions().position(item));
+            for (int j=0;j<arrLLasset.size();j++) {
+                item=new LatLng(arrlat.get(j),arrlng.get(j));
+                Log.d("sizeARRLkkkk"+j, String.valueOf(String.valueOf(arrLLasset.get(j).getLatitude())));
+                destinationMarker = mapboxMap.addMarker( new MarkerOptions().position(item));
 
-               }
+            }
             destinationPosition=Point.fromLngLat(point.getLongitude(), point.getLatitude());
 
             mapboxMap.setOnMarkerClickListener(new MapboxMap.OnMarkerClickListener() {
@@ -325,15 +330,35 @@ public class MapFragment extends Fragment {
                         if(marker.getPosition().getLatitude()==arrlat.get(i)&&
                                 marker.getPosition().getLongitude()==arrlng.get(i))
                         {
+
+                            final BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(getActivity(), R.style.BottomSheetDialogTheme);
+                            View bottomSheetView = LayoutInflater.from(getActivity().getApplicationContext())
+                                    .inflate(
+                                            R.layout.activity_bottomsheet,
+                                            bottomSheet= (RelativeLayout) getView().findViewById(R.id.bottomSheetContainer));
+                            bottomSheetDialog.setContentView(bottomSheetView);
+
+                            bottomSheetDialog.show();
+
+                            txt1=bottomSheetView.findViewById(R.id.txt1);
+                            txt2=bottomSheetView.findViewById(R.id.txt2);
+                            txt3=bottomSheetView.findViewById(R.id.txt3);
+                            txtTitle=bottomSheetView.findViewById(R.id.txttitle3);
+                            btn=bottomSheetView.findViewById(R.id.btn1);
+                            txt1.setText("truong");
                             getData(idAsset.get(i));
-                            Toast toast = Toast.makeText(getActivity(), idAsset.get(i), Toast.LENGTH_SHORT);
-                            toast.show();
+                            /*Toast toast = Toast.makeText(getActivity(), idAsset.get(i), Toast.LENGTH_SHORT);
+                            toast.show();*/
+
                         }
 
                     }
 
+
                     return true;
                 }
+
+
             });
 
             //orPosition=Point.fromLngLat(orlocation.getLongitude(),orlocation.getLatitude());
@@ -363,7 +388,7 @@ public class MapFragment extends Fragment {
                 String AssetID;
                 for(int i=0;i<arr.size();i++)
                 {
-                     status=true;
+                    status=true;
                     try {
                         lng=arr.get(i).getAsJsonObject().get("attributes").getAsJsonObject().get("location").getAsJsonObject().get("value").getAsJsonObject().get("coordinates").getAsJsonArray().get(0).getAsDouble();
                         lat=arr.get(i).getAsJsonObject().get("attributes").getAsJsonObject().get("location").getAsJsonObject().get("value").getAsJsonObject().get("coordinates").getAsJsonArray().get(1).getAsDouble();
@@ -379,7 +404,7 @@ public class MapFragment extends Fragment {
                         Log.d("Lat"+i, String.valueOf(arrLLasset.size()));
                         Log.d("Lat"+i, "thanh cong");
 
-                       // Log.d("Lat"+i, "thanh cong");
+                        // Log.d("Lat"+i, "thanh cong");
 
 
                     }catch (Exception e)
@@ -412,5 +437,5 @@ public class MapFragment extends Fragment {
 
     }
 
-
 }
+
