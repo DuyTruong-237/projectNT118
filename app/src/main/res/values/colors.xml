@@ -3,19 +3,20 @@
     <color name="purple_200">#FFBB86FC</color>
     <color name="purple_500">#FF6200EE</color>
     <color name="purple_700">#FF3700B3</color>
-    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_200">#00F5FF</color>
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="blurry_white">#9AFFFFFF</color>
-    <color name="blurry_pastel_blue">#B7C3EBFF</color>
-    <color name="mainColor1">#BBD8F2</color>
-    <color name="maincolor2">#716DF2</color>
-    <color name="mainColor3">#A0B4F2</color>
-    <color name="purple_100">#E8D5FF</color>
-    <color name="blurry_light_pink">#F2E4F2</color>
+<<<<<<< HEAD
+    <color name="mainColor1">#CCFF4500</color>
+    <color name="maincolor2">#FCDAD5</color>
+    <color name="mint">#E6F1D8</color>
+    <color name="infoColor">#80FFCC99</color>
+    <color name="botnavi">#8B4500</color>
+=======
+    <color name="mainColor1">#fa924c</color>
     <color name="gray">#787776</color>
     <color name="infoColor">#FDF5E6</color>
-    <color name="tt_color">#0746BC</color>
-    <color name="blurry_pastel_blue1">#88C3EBFF</color>
+>>>>>>> origin/truong
+
 </resources>

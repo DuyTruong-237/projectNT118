@@ -1,14 +1,10 @@
 package com.example.myapplication;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.AdapterView;
-
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.PopupMenu;
@@ -18,13 +14,10 @@ import android.widget.Toolbar;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.view.ViewParentCompat;
-import androidx.fragment.app.FragmentActivity;
 
 import com.example.myapplication.API.APIClient;
 import com.example.myapplication.API.APIInterface;
 import com.example.myapplication.Model.Asset;
-import com.example.myapplication.Model.Device_item;
 import com.example.myapplication.Model.infoAsset;
 import com.example.myapplication.adapter.inforAdapter;
 import com.google.gson.JsonArray;
@@ -33,7 +26,6 @@ import com.google.gson.JsonObject;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Locale;
 
@@ -41,25 +33,37 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class activity_info_device extends FragmentActivity {
+public class activity_info_device extends AppCompatActivity {
     ListView lvInfo;
-    Button btn;
     inforAdapter ifadapter;
     APIInterface apiInterface;
+<<<<<<< HEAD
+
     String assetID;
-    Button Backbtn;
+
+=======
+    String assetID;
+>>>>>>> origin/truong
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.infodevice);
-        btn=findViewById(R.id.btndetail);
+<<<<<<< HEAD
+
+=======
+>>>>>>> origin/truong
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
             String value = extras.getString("idDevice");
             assetID=value;
             //The key argument here must match that used in the other activity
         }
+<<<<<<< HEAD
+         lvInfo=findViewById(R.id.lv_Info);
+
+=======
          lvInfo=findViewById(R.id.lvInfo);
+>>>>>>> origin/truong
         ifadapter=new inforAdapter(activity_info_device.this,R.layout.asset_info_item);
         lvInfo.setAdapter(ifadapter);
         ImageView iv_back = findViewById(R.id.iv_back);
@@ -70,10 +74,7 @@ public class activity_info_device extends FragmentActivity {
         iv_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //Toast.makeText(activity_info_device.this, "Back", Toast.LENGTH_SHORT).show();
-                /*ntent intent = new Intent(activity_info_device.this, back);
-                startActivity(intent);*/
-                finish();
+                Toast.makeText(activity_info_device.this, "Back", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -85,16 +86,8 @@ public class activity_info_device extends FragmentActivity {
                 showMenu(view);
             }
         });
-        btn.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v){
-                Intent intent = new Intent(activity_info_device.this,asset_detailActivity.class );
-                startActivity(intent);
-            }
-        });
-
     }
-    
+
     private void fakeData() {
         apiInterface = APIClient.getClient().create(APIInterface.class);
         Call<Asset> call = apiInterface.getAsset(assetID);//, "Bearer "+ token);

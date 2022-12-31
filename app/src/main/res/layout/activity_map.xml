@@ -4,61 +4,29 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/mainColor3">
-    <include layout="@layout/activity_map_toolbar"></include>
+    android:background="@color/maincolor2">
+
     <FrameLayout
         android:id="@+id/frame_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="70dp">
+        android:layout_marginTop="50dp">
 
         <RelativeLayout
             android:id="@+id/contentPanel"
             android:layout_width="match_parent"
             android:layout_height="160dp"
-            android:background="@drawable/custom_undermap"
+            android:background="@color/white"
             android:layout_below="@+id/frame_layout"
             android:orientation="horizontal"
             android:layout_gravity="bottom">
-          <ScrollView
-              android:layout_width="match_parent"
-              android:layout_height="wrap_content">
-
-              <TableLayout
-                  android:id="@+id/tb_undermap"
-                  android:layout_width="match_parent"
-                  android:layout_height="wrap_content"
-                  tools:ignore="InvalidId"
-                  android:stretchColumns="*">
-
-                  <TableRow
-                      android:id="@+id/tbRow1"
-                      android:layout_width="wrap_content"
-                      android:layout_height="wrap_content">
-
-                      <TextView
-                          android:id="@+id/tv1"
-                          android:layout_width="wrap_content"
-                          android:layout_height="wrap_content"
-                          android:text="Thiet bi dang truy cap"
-                          android:layout_marginTop="10dp"
-                          android:textAlignment="center">
-                      </TextView>
-                      <TextView
-                          android:id="@+id/tv2"
-                          android:layout_width="wrap_content"
-                          android:layout_height="wrap_content"
-                          android:text="TEN THIET BI "
-                          android:layout_marginTop="10dp"
-                          android:textAlignment="center">
-                      </TextView>
 
 
-                  </TableRow>
+         <ListView
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content">
 
-
-              </TableLayout>
-          </ScrollView>
+         </ListView>
 
 
         </RelativeLayout>
