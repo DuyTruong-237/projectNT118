@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rlt_1"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
@@ -25,7 +26,7 @@
             android:layout_toEndOf="@+id/iv_back"
             android:textColor="@color/white"
             android:textSize="20dp"
-            android:text="@string/infor_device"
+            android:text="@string/list_device"
             android:layout_centerVertical="true"/>
 
         <ImageView
