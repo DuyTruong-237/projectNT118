@@ -52,6 +52,7 @@ public class asset_detailActivity extends AppCompatActivity {
     Spinner snThumbnail;
     Button btn1;
     Button btn2;
+    Button btn_xem;
     int img = Thumbnail.Thumbnail1.getImg();
     ThumbnailAdapter thumbnailAdapter;
     @Override
@@ -59,6 +60,7 @@ public class asset_detailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail_asset);
         txtTitle=findViewById(R.id.txtTitle);
+        btn_xem = (Button) findViewById(R.id.btn_xem) ;
 
         Bundle extras = getIntent().getExtras();
         if (extras!=null)
@@ -136,7 +138,7 @@ public class asset_detailActivity extends AppCompatActivity {
         DatePickerDialog datePickerDialog = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                btn.setText(year + "/" + month +"/"+dayOfMonth);
+                btn.setText(dayOfMonth + "/" + month +"/"+year);
             }
         }, 2022, 01, 29);
         datePickerDialog.show();
