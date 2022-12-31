@@ -33,6 +33,11 @@ import java.util.List;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.Spinner;
+import com.example.myapplication.Model.Thumbnail;
+import com.example.myapplication.Model.ThumbnailAdapter;
 
 public class asset_detailActivity extends AppCompatActivity {
     public static DatabaseHelper db;
@@ -41,15 +46,27 @@ public class asset_detailActivity extends AppCompatActivity {
     String assetID;
     TextView txtTitle;
     LineChart lineChart;
+    Spinner snThumbnail;
+    int img = Thumbnail.Thumbnail1.getImg();
+    ThumbnailAdapter thumbnailAdapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail_asset);
+        thumbnailAdapter = new ThumbnailAdapter(
+                this,
+                R.layout.item_thumbnail,
+                R.layout.item_selected_thumbnail
+        );
+        setThumbnail();
+        drawLineChart(lineChart);
+
+
         txtTitle=findViewById(R.id.txtTitle);
         Bundle extras = getIntent().getExtras();
         if (extras!=null)
-        assetID= extras.getString("idDevice");
-         lineChart = findViewById(R.id.chart);
+            assetID= extras.getString("idDevice");
+        lineChart = findViewById(R.id.chart);
         db = new DatabaseHelper(this);
 
         infors = db.getAllContacts();
@@ -62,7 +79,7 @@ public class asset_detailActivity extends AppCompatActivity {
           }
       }
       txtTitle.setText(infors.get(0).getName());
-        drawLineChart(lineChart);
+
 
 
 
@@ -97,6 +114,36 @@ public class asset_detailActivity extends AppCompatActivity {
         dataSet.setColors(ColorTemplate.COLORFUL_COLORS);
         pieChart.animateXY(5000, 5000);*/
     }
+
+    private void setThumbnail() {
+        snThumbnail = (Spinner) findViewById(R.id.sn_thumbnail);
+        snThumbnail.setAdapter(thumbnailAdapter);
+        snThumbnail.setOnItemSelectedListener(
+                new AdapterView.OnItemSelectedListener() {
+                    @Override
+                    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                        switch (i) {
+                            case 0:
+                                img = Thumbnail.Thumbnail1.getImg();
+                                break;
+                            case 1:
+                                img = Thumbnail.Thumbnail2.getImg();
+                                break;
+                            case 2:
+                                img = Thumbnail.Thumbnail3.getImg();
+                                break;
+                            /*case 3:
+                                img = Thumbnail.Thumbnail4.getImg();
+                                break;*/
+                        }
+                    }
+                    @Override
+                    public void onNothingSelected(AdapterView<?> adapterView) {
+                    }
+                }
+        );
+    }
+
     private void callApiAndSave() {
         apiInterface = APIClient.getClient().create(APIInterface.class);
         Call<Asset> call = apiInterface.getAsset("6H4PeKLRMea1L0WsRXXWp9");//, "Bearer "+ token);
