@@ -8,7 +8,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="20dp"
-        android:textColor="@color/black"
+        android:textColor="@color/maincolor2"
         android:textStyle="bold"
         android:layout_marginTop="10dp"
         android:layout_marginLeft="10dp"
@@ -21,6 +21,7 @@
         android:layout_marginLeft="10dp"
         android:layout_marginTop="10dp"
         android:textSize="20dp"
+        android:textColor="@color/maincolor2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         />
