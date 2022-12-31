@@ -11,5 +11,6 @@
         android:layout_width="match_parent"
         android:layout_height="729dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:paddingEnd="10dp"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
