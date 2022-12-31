@@ -13,4 +13,6 @@
     <string name="token">pk.eyJ1IjoicGF0dWFuYXMiLCJhIjoiY2xiMDlqNXpjMWc2MzNwbG5zNjFtZTJrYSJ9.doV1xr8TtmerKMLjcLrPeg</string>
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="info_device">Thông tin thiết bị truy cập</string>
+    <string name="list_device">Danh sách thiết bị </string>
 </resources>

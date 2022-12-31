@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rlt_1"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
@@ -11,7 +12,7 @@
         android:padding="16dp">
 
         <ImageView
-            android:id="@+id/iv_back"
+            android:id="@+id/iv_back1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/ic_back"
@@ -20,20 +21,20 @@
         </ImageView>
 
         <TextView
-            android:id="@+id/tv_Info"
+            android:id="@+id/tv_Info1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_toEndOf="@+id/iv_back"
+            android:layout_toEndOf="@+id/iv_back1"
             android:textColor="@color/white"
             android:textSize="20dp"
 
             android:layout_marginLeft="10dp"
-            android:text="@string/info_device"
+            android:text="@string/list_device"
             android:layout_centerVertical="true"
             tools:ignore="ExtraText" />
 
         <ImageView
-            android:id="@+id/iv_setting"
+            android:id="@+id/iv_setting1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
