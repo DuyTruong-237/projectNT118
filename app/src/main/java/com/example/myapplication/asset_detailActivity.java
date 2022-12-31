@@ -3,9 +3,14 @@ import android.graphics.Color;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.Spinner;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.myapplication.Model.Thumbnail;
+import com.example.myapplication.Model.ThumbnailAdapter;
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.charts.PieChart;
 import com.github.mikephil.charting.components.XAxis;
@@ -24,6 +29,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class asset_detailActivity extends AppCompatActivity {
+    Spinner snThumbnail;
+    int img = Thumbnail.Thumbnail1.getImg();
+    ThumbnailAdapter thumbnailAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +40,42 @@ public class asset_detailActivity extends AppCompatActivity {
         LineChart lineChart = findViewById(R.id.chart);
         drawLineChart(lineChart);
 
+        thumbnailAdapter = new ThumbnailAdapter(
+                this,
+                R.layout.item_thumbnail,
+                R.layout.item_selected_thumbnail
+        );
+
+        snThumbnail = (Spinner) findViewById(R.id.sn_thumbnail);
+
+        snThumbnail.setAdapter(thumbnailAdapter);
+
+        snThumbnail.setOnItemSelectedListener(
+                new AdapterView.OnItemSelectedListener() {
+                    @Override
+                    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                        switch (i) {
+                            case 0:
+                                img = Thumbnail.Thumbnail1.getImg();
+                                break;
+                            case 1:
+                                img = Thumbnail.Thumbnail2.getImg();
+                                break;
+                            case 2:
+                                img = Thumbnail.Thumbnail3.getImg();
+                                break;
+                            /*case 3:
+                                img = Thumbnail.Thumbnail4.getImg();
+                                break;*/
+                        }
+                    }
+
+                    @Override
+                    public void onNothingSelected(AdapterView<?> adapterView) {
+
+                    }
+                }
+        );
 
        /* ArrayList NoOfEmp = new ArrayList();
 
@@ -129,5 +173,6 @@ public class asset_detailActivity extends AppCompatActivity {
         lineEntries.add(new Entry(6, 1));
         return lineEntries;
     }
+
 }
 
