@@ -1,8 +1,11 @@
 package com.example.myapplication;
+import android.app.DatePickerDialog;
 import android.graphics.Color;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Button;
+import android.widget.DatePicker;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -117,7 +120,16 @@ public class asset_detailActivity extends AppCompatActivity {
         chart.invalidate();
 
     }
-
+    private void Chonngay(Button btn)
+    {
+        DatePickerDialog datePickerDialog = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                btn.setText(year + "/" + month +"/"+dayOfMonth);
+            }
+        }, 2022, 01, 29);
+        datePickerDialog.show();
+    }
     private List<Entry> getDataSet() {
         List<Entry> lineEntries = new ArrayList<>();
         lineEntries.add(new Entry(0, 4));
