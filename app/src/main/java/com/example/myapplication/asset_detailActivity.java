@@ -1,10 +1,13 @@
 package com.example.myapplication;
+import android.app.DatePickerDialog;
 import android.graphics.Color;
 
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -47,6 +50,8 @@ public class asset_detailActivity extends AppCompatActivity {
     TextView txtTitle;
     LineChart lineChart;
     Spinner snThumbnail;
+    Button btn1;
+    Button btn2;
     int img = Thumbnail.Thumbnail1.getImg();
     ThumbnailAdapter thumbnailAdapter;
     @Override
@@ -64,6 +69,20 @@ public class asset_detailActivity extends AppCompatActivity {
                 R.layout.item_selected_thumbnail
         );
         setThumbnail();
+        btn1=(Button) findViewById(R.id.btn_from);
+        btn2 =(Button) findViewById(R.id.btn_to);
+        btn1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Chonngay(btn1);
+            }
+        });
+        btn2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Chonngay(btn2);
+            }
+        });
         lineChart = findViewById(R.id.chart);
         db = new DatabaseHelper(this);
 
@@ -111,6 +130,16 @@ public class asset_detailActivity extends AppCompatActivity {
         pieChart.setData(data);
         dataSet.setColors(ColorTemplate.COLORFUL_COLORS);
         pieChart.animateXY(5000, 5000);*/
+    }
+    private void Chonngay(Button btn)
+    {
+        DatePickerDialog datePickerDialog = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                btn.setText(year + "/" + month +"/"+dayOfMonth);
+            }
+        }, 2022, 01, 29);
+        datePickerDialog.show();
     }
     private void setThumbnail() {
         snThumbnail = (Spinner) findViewById(R.id.sn_thumbnail);
