@@ -53,6 +53,7 @@ public class activity_info_device extends FragmentActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.infodevice);
         btn=findViewById(R.id.btndetail);
+
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
             String value = extras.getString("idDevice");
@@ -89,6 +90,7 @@ public class activity_info_device extends FragmentActivity {
             @Override
             public void onClick(View v){
                 Intent intent = new Intent(activity_info_device.this,asset_detailActivity.class );
+                intent.putExtra("assetID",assetID);
                 startActivity(intent);
             }
         });
