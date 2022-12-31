@@ -1,14 +1,17 @@
 package com.example.myapplication;
-import android.app.DatePickerDialog;
 import android.graphics.Color;
 
 import android.os.Bundle;
 import android.util.Log;
-import android.widget.Button;
-import android.widget.DatePicker;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.myapplication.API.APIClient;
+import com.example.myapplication.API.APIInterface;
+import com.example.myapplication.DB.DatabaseHelper;
+import com.example.myapplication.Model.Asset;
+import com.example.myapplication.Model.asset_infor;
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.charts.PieChart;
 import com.github.mikephil.charting.components.XAxis;
@@ -24,16 +27,43 @@ import com.github.mikephil.charting.formatter.PercentFormatter;
 import com.github.mikephil.charting.utils.ColorTemplate;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
-public class asset_detailActivity extends AppCompatActivity {
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
+public class asset_detailActivity extends AppCompatActivity {
+    public static DatabaseHelper db;
+    APIInterface apiInterface;
+    List<asset_infor> infors;
+    String assetID;
+    TextView txtTitle;
+    LineChart lineChart;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail_asset);
-        LineChart lineChart = findViewById(R.id.chart);
+        txtTitle=findViewById(R.id.txtTitle);
+        Bundle extras = getIntent().getExtras();
+        if (extras!=null)
+        assetID= extras.getString("idDevice");
+         lineChart = findViewById(R.id.chart);
+        db = new DatabaseHelper(this);
+
+        infors = db.getAllContacts();
+       // callApiAndSave();
+      for(int i=0;i<infors.size();i++)
+      {
+          if (!infors.get(i).getIdasset().equals(assetID))
+          {
+              infors.remove(i);
+          }
+      }
+      txtTitle.setText(infors.get(0).getName());
         drawLineChart(lineChart);
+
 
 
        /* ArrayList NoOfEmp = new ArrayList();
@@ -66,6 +96,46 @@ public class asset_detailActivity extends AppCompatActivity {
         pieChart.setData(data);
         dataSet.setColors(ColorTemplate.COLORFUL_COLORS);
         pieChart.animateXY(5000, 5000);*/
+    }
+    private void callApiAndSave() {
+        apiInterface = APIClient.getClient().create(APIInterface.class);
+        Call<Asset> call = apiInterface.getAsset("6H4PeKLRMea1L0WsRXXWp9");//, "Bearer "+ token);
+        call.enqueue(new Callback<Asset>() {
+            @Override
+            public void onResponse(Call<Asset> call, Response<Asset> response) {
+                Log.d("API CALL", response.code()+"");
+                //Log.d ("API CALL", response.toString());
+                Asset asset = response.body();
+
+                Log.d("API CALL", asset.type+"");
+                float t=asset.attributes.get("temperature").getAsJsonObject().get("value").getAsInt();
+                String a=String.valueOf(t);
+                Date date=new Date();
+                String day=date.getDate()+"/"+date.getMonth()+"/"+date.getYear();
+                //db.addInfor(new asset_infor(1,"temperature","t",day,t));
+                infors = db.getAllContacts();
+                //Log.d("hello",infors.get(0).getId()+infors.get(0).getIdasset()+"-"+infors.get(0).getDate1()+"-"+infors.get(0).getValue() );
+                /*int h=asset.attributes.get("humidity").getAsJsonObject().get("value").getAsInt();
+                a=String.valueOf(h);
+                Log.d(TAG, a);
+                a=asset.attributes.get("weatherData").getAsJsonObject().get("value").getAsJsonObject().get("weather").getAsJsonArray().get(0).getAsJsonObject().get("description").getAsString();
+                Log.d(TAG, a);
+                float w=asset.attributes.get("windSpeed").getAsJsonObject().get("value").getAsFloat();
+                a=String.valueOf(w);
+                Log.d(TAG, a);*/
+                //txttype.setText(asset.type);
+
+            }
+
+
+            @Override
+            public void onFailure(Call<Asset> call, Throwable t) {
+                Log.d("API CALL", t.getMessage().toString());
+
+                //t.printStackTrace();
+
+            }
+        });
     }
     private void drawLineChart(LineChart chart) {
 
@@ -113,32 +183,22 @@ public class asset_detailActivity extends AppCompatActivity {
 
         YAxis yAxis = chart.getAxisLeft();
         yAxis.setAxisMinimum(0);
-        yAxis.setAxisMaximum(24);
+        yAxis.setAxisMaximum(32);
 
         chart.getAxisRight().setEnabled(false);
 
         chart.invalidate();
 
     }
-    private void Chonngay(Button btn)
-    {
-        DatePickerDialog datePickerDialog = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
-            @Override
-            public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                btn.setText(year + "/" + month +"/"+dayOfMonth);
-            }
-        }, 2022, 01, 29);
-        datePickerDialog.show();
-    }
+
     private List<Entry> getDataSet() {
         List<Entry> lineEntries = new ArrayList<>();
-        lineEntries.add(new Entry(0, 4));
-        lineEntries.add(new Entry(1, 3));
-        lineEntries.add(new Entry(2, 6));
-        lineEntries.add(new Entry(3, 8));
-        lineEntries.add(new Entry(4, 2));
-        lineEntries.add(new Entry(5, 3));
-        lineEntries.add(new Entry(6, 1));
+        for(int i=0;i<infors.size();i++)
+        {
+            lineEntries.add(new Entry(i, infors.get(i).getValueT()));
+        }
+
+
         return lineEntries;
     }
 }
