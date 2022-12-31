@@ -1,12 +1,11 @@
 package com.example.myapplication;
-import android.app.DatePickerDialog;
 import android.graphics.Color;
 
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
-import android.widget.DatePicker;
+import android.widget.AdapterView;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -15,6 +14,8 @@ import com.example.myapplication.API.APIClient;
 import com.example.myapplication.API.APIInterface;
 import com.example.myapplication.DB.DatabaseHelper;
 import com.example.myapplication.Model.Asset;
+import com.example.myapplication.Model.Thumbnail;
+import com.example.myapplication.Model.ThumbnailAdapter;
 import com.example.myapplication.Model.asset_infor;
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.charts.PieChart;
@@ -45,32 +46,25 @@ public class asset_detailActivity extends AppCompatActivity {
     String assetID;
     TextView txtTitle;
     LineChart lineChart;
-    Button btn1;
-    Button btn2;
+    Spinner snThumbnail;
+    int img = Thumbnail.Thumbnail1.getImg();
+    ThumbnailAdapter thumbnailAdapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail_asset);
-
         txtTitle=findViewById(R.id.txtTitle);
-        btn1=(Button) findViewById(R.id.btn_from);
+
         Bundle extras = getIntent().getExtras();
-        btn2 =(Button) findViewById(R.id.btn_to);
         if (extras!=null)
-            assetID= extras.getString("idDevice");
-        btn1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Chonngay(btn1);
-            }
-        });
-        btn2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Chonngay(btn2);
-            }
-        });
-         lineChart = findViewById(R.id.chart);
+          assetID= extras.getString("idDevice");
+        thumbnailAdapter = new ThumbnailAdapter(
+                this,
+                R.layout.item_thumbnail,
+                R.layout.item_selected_thumbnail
+        );
+        setThumbnail();
+        lineChart = findViewById(R.id.chart);
         db = new DatabaseHelper(this);
 
         infors = db.getAllContacts();
@@ -118,6 +112,35 @@ public class asset_detailActivity extends AppCompatActivity {
         dataSet.setColors(ColorTemplate.COLORFUL_COLORS);
         pieChart.animateXY(5000, 5000);*/
     }
+    private void setThumbnail() {
+        snThumbnail = (Spinner) findViewById(R.id.sn_thumbnail);
+        snThumbnail.setAdapter(thumbnailAdapter);
+        snThumbnail.setOnItemSelectedListener(
+                new AdapterView.OnItemSelectedListener() {
+                    @Override
+                    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                        switch (i) {
+                            case 0:
+                                img = Thumbnail.Thumbnail1.getImg();
+                                break;
+                            case 1:
+                                img = Thumbnail.Thumbnail2.getImg();
+                                break;
+                            case 2:
+                                img = Thumbnail.Thumbnail3.getImg();
+                                break;
+                            /*case 3:
+                                img = Thumbnail.Thumbnail4.getImg();
+                                break;*/
+                        }
+                    }
+                    @Override
+                    public void onNothingSelected(AdapterView<?> adapterView) {
+                    }
+                }
+        );
+    }
+
     private void callApiAndSave() {
         apiInterface = APIClient.getClient().create(APIInterface.class);
         Call<Asset> call = apiInterface.getAsset("6H4PeKLRMea1L0WsRXXWp9");//, "Bearer "+ token);
@@ -211,16 +234,7 @@ public class asset_detailActivity extends AppCompatActivity {
         chart.invalidate();
 
     }
-    private void Chonngay(Button btn)
-    {
-        DatePickerDialog datePickerDialog = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
-            @Override
-            public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                btn.setText(year + "/" + month +"/"+dayOfMonth);
-            }
-        }, 2022, 01, 29);
-        datePickerDialog.show();
-    }
+
     private List<Entry> getDataSet() {
         List<Entry> lineEntries = new ArrayList<>();
         for(int i=0;i<infors.size();i++)
