@@ -7,7 +7,7 @@
         android:id="@+id/txtTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Temperature"
+        android:text="Line Chart"
         android:gravity="center"
         android:textColor="@color/maincolor2"
         android:textSize="40dp"
@@ -17,12 +17,13 @@
         android:id="@+id/sn_thumbnail"
         android:layout_below="@+id/txtTitle"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="20dp"
+        android:layout_alignParentLeft="true"
         android:layout_marginTop="50dp"
         android:spinnerMode="dialog"
         app:layout_constraintEnd_toEndOf="parent"
+
         />
     <LinearLayout
 
