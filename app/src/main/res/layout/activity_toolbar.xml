@@ -25,7 +25,10 @@
             android:layout_toEndOf="@+id/iv_back"
             android:textColor="@color/white"
             android:textSize="20dp"
+<<<<<<< HEAD
             android:layout_marginLeft="10dp"
+=======
+>>>>>>> parent of c2922da (add_toolbar)
             android:text="Thông tin thiết bị truy cập"
             android:layout_centerVertical="true"/>
 

@@ -9,6 +9,10 @@
     android:background="@color/white">
 
     <ListView
+<<<<<<< HEAD
+=======
+
+>>>>>>> parent of c2922da (add_toolbar)
         android:id="@+id/lvDevices"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
