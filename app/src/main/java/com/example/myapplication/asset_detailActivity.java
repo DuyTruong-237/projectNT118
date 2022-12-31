@@ -62,6 +62,8 @@ public class asset_detailActivity extends AppCompatActivity {
         txtTitle=findViewById(R.id.txtTitle);
         btn_xem = (Button) findViewById(R.id.btn_xem) ;
 
+        btn_xem = (Button) findViewById(R.id.btn_xem) ;
+
         Bundle extras = getIntent().getExtras();
         if (extras!=null)
           assetID= extras.getString("idDevice");
@@ -81,6 +83,7 @@ public class asset_detailActivity extends AppCompatActivity {
         });
         btn2.setOnClickListener(new View.OnClickListener() {
             @Override
+
             public void onClick(View v) {
                 Chonngay(btn2);
             }
