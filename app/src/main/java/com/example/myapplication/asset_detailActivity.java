@@ -1,8 +1,12 @@
 package com.example.myapplication;
+import android.app.DatePickerDialog;
 import android.graphics.Color;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -41,14 +45,31 @@ public class asset_detailActivity extends AppCompatActivity {
     String assetID;
     TextView txtTitle;
     LineChart lineChart;
+    Button btn1;
+    Button btn2;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail_asset);
+
         txtTitle=findViewById(R.id.txtTitle);
+        btn1=(Button) findViewById(R.id.btn_from);
         Bundle extras = getIntent().getExtras();
+        btn2 =(Button) findViewById(R.id.btn_to);
         if (extras!=null)
-        assetID= extras.getString("idDevice");
+            assetID= extras.getString("idDevice");
+        btn1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Chonngay(btn1);
+            }
+        });
+        btn2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Chonngay(btn2);
+            }
+        });
          lineChart = findViewById(R.id.chart);
         db = new DatabaseHelper(this);
 
@@ -190,7 +211,16 @@ public class asset_detailActivity extends AppCompatActivity {
         chart.invalidate();
 
     }
-
+    private void Chonngay(Button btn)
+    {
+        DatePickerDialog datePickerDialog = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                btn.setText(year + "/" + month +"/"+dayOfMonth);
+            }
+        }, 2022, 01, 29);
+        datePickerDialog.show();
+    }
     private List<Entry> getDataSet() {
         List<Entry> lineEntries = new ArrayList<>();
         for(int i=0;i<infors.size();i++)
