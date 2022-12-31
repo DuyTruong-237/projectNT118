@@ -5,7 +5,7 @@
     <RelativeLayout
         android:id="@+id/bottomSheetContainer"
         android:layout_width="match_parent"
-        android:layout_height="300dp"
+        android:layout_height="280dp"
         android:background="@color/white"
         android:layout_gravity="bottom"
         >
@@ -16,7 +16,7 @@
             android:layout_width="match_parent"
             android:text="UIT Map Information"
             android:gravity="center"
-            android:textSize="30dp"
+            android:textSize="28dp"
             android:fontFamily="sans-serif-black"
             android:textStyle="bold"
             android:textColor="@color/maincolor2"
@@ -83,7 +83,7 @@
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:layout_marginStart="130dp"
-            android:layout_marginTop="25dp"
+            android:layout_marginTop="20dp"
             android:layout_marginRight="130dp"
             android:background="@color/maincolor2"
             android:text="View more"
