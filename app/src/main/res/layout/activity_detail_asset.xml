@@ -3,36 +3,37 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FAF1F0"
     xmlns:app="http://schemas.android.com/apk/res-auto">
+    <include layout="@layout/activity_detail_asset_toolbar"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="70dp"
+        android:background="#FAF1F0">
     <LinearLayout
         android:id="@+id/asset_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/custom_background_gradiently"
         android:weightSum="4"
+        android:layout_marginTop="20dp"
         android:orientation="horizontal">
         <TextView
             android:id="@+id/txtTitle"
             android:layout_weight="1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
             android:text="Temperature"
-            android:gravity="center"
             android:textStyle="bold"
             android:textColor="#954C07BC"
-            android:textSize="30dp"
-            android:layout_marginBottom="20px"
-            android:padding="20dp"
+            android:textSize="20dp"
+            android:padding="10dp"
             />
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="3"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginBottom="10dp"
-            android:layout_marginTop="10dp"
             android:src="@drawable/ic_asset"
             />
 
@@ -42,53 +43,54 @@
         android:layout_below="@+id/asset_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginRight="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="40dp"
+        android:padding="20dp"
         android:spinnerMode="dialog"
         app:layout_constraintEnd_toEndOf="parent"
         />
     <LinearLayout
-        android:layout_marginTop="20dp"
         android:id="@+id/ll_date"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="wrap_content"
         android:layout_below="@+id/sn_thumbnail"
         android:weightSum="2"
-        android:orientation="horizontal"
-        android:padding="5dp">
+        android:orientation="horizontal">
         <LinearLayout
             android:layout_weight="1"
             android:layout_width="fill_parent"
-            android:layout_height="70dp"
-            android:padding="5dp">
+            android:layout_height="wrap_content"
+            android:padding="10dp">
             <Button
                 android:id="@+id/btn_from"
                 android:layout_width="match_parent"
-                android:layout_height="60dp"
+                android:layout_height="wrap_content"
                 android:textSize="20dp"
                 android:textColor="@color/tt_color"
                 android:text="Từ ngày"
+                android:textAllCaps="false"
+                android:textAlignment="center"
                 android:fontFamily="sans-serif"
+                android:padding="10dp"
                 android:background="@drawable/custom_button_date"/>
 
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="fill_parent"
-            android:layout_height="70dp"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:padding="5dp">
+            android:padding="10dp">
 
             <Button
                 android:id="@+id/btn_to"
                 android:layout_width="match_parent"
-                android:layout_height="60dp"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
                 android:fontFamily="sans-serif"
                 android:textColor="@color/tt_color"
+                android:textAlignment="center"
                 android:textSize="20dp"
                 android:text="Đến ngày"
+                android:textAllCaps="false"
                 android:background="@drawable/custom_button_date"/>
 
 
@@ -96,35 +98,47 @@
         </LinearLayout>
 
     </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/ll_date"
+            android:layout_marginTop="20dp"
+            android:weightSum="4"
+            android:orientation="vertical">
+            <LinearLayout
+                android:id="@+id/ll_chart"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_below="@+id/ll_date">
+                <com.github.mikephil.charting.charts.LineChart
+                    android:id="@+id/chart"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:layout_weight="3"
+                android:layout_below="@id/ll_chart">
+                <Button
+                    android:id="@+id/btn_xem"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:background="@drawable/custom_button_date"
+                    android:textColor="@color/tt_color"
+                    android:textSize="20dp"
+                    android:fontFamily="sans-serif-black"
+                    android:textAlignment="center"
+                    android:textAllCaps="false"
+                    android:text="Xem" />
+            </LinearLayout>
 
-    <LinearLayout
-        android:id="@+id/ll_chart"
-        android:layout_width="match_parent"
-        android:layout_height="280dp"
-        android:layout_below="@+id/sn_thumbnail"
-        android:layout_marginTop="140dp">
 
-    <com.github.mikephil.charting.charts.LineChart
-        android:layout_below="@+id/txtTitle"
-        android:id="@+id/chart"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"
-        android:layout_below="@id/ll_chart">
 
-        <Button
-            android:id="@+id/btn_xem"
-            android:layout_width="120dp"
-            android:layout_height="60dp"
-            android:background="@drawable/custom_button_date"
-            android:textColor="@color/tt_color"
-            android:textSize="20dp"
-            android:fontFamily="sans-serif-black"
-            android:text="Xem" />
-    </LinearLayout>
+        </LinearLayout>
 
+    </RelativeLayout>
 </RelativeLayout>
