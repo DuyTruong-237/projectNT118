@@ -97,7 +97,7 @@
     android:layout_below="@id/ll_chart">
 
     <Button
-        android:id="@+id/btn_xem"
+        android:id="@+id/btn_view"
         android:layout_width="120dp"
         android:layout_height="60dp"
         android:background="@drawable/custom_button_date"

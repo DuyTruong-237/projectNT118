@@ -51,7 +51,9 @@ public class asset_detailActivity extends AppCompatActivity {
     LineChart lineChart;
     Spinner snThumbnail;
     Button btn1;
-    Button btn2;
+    Spinner spiner;
+    Button btn2,btnView;
+    int spinner_pos;
     int img = Thumbnail.Thumbnail1.getImg();
     ThumbnailAdapter thumbnailAdapter;
     @Override
@@ -61,9 +63,14 @@ public class asset_detailActivity extends AppCompatActivity {
         txtTitle=findViewById(R.id.txtTitle);
         btn1=(Button) findViewById(R.id.btn_from);
         btn2 =(Button) findViewById(R.id.btn_to);
+        btnView=findViewById(R.id.btn_view);
+        spiner=findViewById(R.id.sn_thumbnail);
         Bundle extras = getIntent().getExtras();
+
         if (extras!=null)
-          assetID=  extras.getString("idDevice");
+          assetID=  extras.getString("assetID");
+
+        //db.addInfor(new asset_infor("6H4PeKLRMea1L0WsRXXWp9","Weather Asset","30/11/122",Float.valueOf(15.9),Float.valueOf(15.9),2.3));
 
         thumbnailAdapter = new ThumbnailAdapter(
                 this,
@@ -89,8 +96,14 @@ public class asset_detailActivity extends AppCompatActivity {
 
 
        // callApiAndSave();*/
+        btnView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                filterIF();
+            }
+        });
 
-       filterIF();
+
 
 
 
@@ -125,18 +138,68 @@ public class asset_detailActivity extends AppCompatActivity {
         dataSet.setColors(ColorTemplate.COLORFUL_COLORS);
         pieChart.animateXY(5000, 5000);*/
     }
-    private void filterIF(){
+
+    private void getDB() {
         db = new DatabaseHelper(this);
-        //db.addInfor(new asset_infor("6H4PeKLRMea1L0WsRXXWp9","Weather Asset","30/11/122",Float.valueOf(15.9),Float.valueOf(15.9),2.3));
         infors = db.getAllContacts();
+
+
         for(int i=0;i<infors.size();i++)
         {
-            if (!infors.get(i).getIdasset().equals(assetID))
+
+            if(infors.get(i).getIdasset().equals(assetID))
             {
-                infors.remove(i);
+                txtTitle.setText(infors.get(i).getName());
+
+                break;
             }
         }
-        txtTitle.setText(infors.get(0).getName());
+    }
+
+    private void filterIF(){
+        getDB();
+        String a;
+         spinner_pos = spiner.getSelectedItemPosition();
+
+        Log.d("name Thum", spinner_pos+"");
+        String[] dateFrom=btn1.getText().toString().split("/");
+        String[] dateTo=btn2.getText().toString().split("/");
+        String dayfrom=dateFrom[0]+"/"+(Integer.parseInt(dateFrom[1])-1)+"/"+(Integer.parseInt(dateFrom[2])-1900);
+        String dayto=dateTo[0]+"/"+(Integer.parseInt(dateTo[1])-1)+"/"+(Integer.parseInt(dateTo[2])-1900);
+        for(int i=0;i<infors.size();i++) {
+            if (!infors.get(i).getIdasset().equals(assetID)) {
+                Log.d("truong2", infors.get(1).getName() + "");
+                infors.remove(i);
+                i--;
+                Log.d("truong2", infors.size() + "");
+                continue;
+            }
+            }
+        List<asset_infor> arr2;
+        arr2=infors;
+        boolean staticday=true;
+        for (int i=0;i<infors.size();i++)
+        {
+            if(dayfrom.equals(infors.get(i).getDate()))
+            {
+                staticday=false;
+            }
+            if(dayto.equals(infors.get(i).getDate()))
+            {
+                staticday=true;
+                i++;
+            }
+            if (staticday==true&&i<infors.size())
+            {
+                infors.remove(i);
+                i--;
+            }
+        }
+        if(infors.size()==0)
+            infors=arr2;
+        Log.d("Sizearr",infors.size()+"");
+            Log.d("err3","1");
+            Log.d("err4","1");
         drawLineChart(lineChart);
     }
     private void Chonngay(Button btn)
@@ -144,9 +207,9 @@ public class asset_detailActivity extends AppCompatActivity {
         DatePickerDialog datePickerDialog = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                btn.setText(year + "/" + month +"/"+dayOfMonth);
+                btn.setText(dayOfMonth + "/" + (month+1) +"/"+year);
             }
-        }, 2022, 01, 29);
+        }, 2022, 11, 31);
         datePickerDialog.show();
     }
     private void setThumbnail() {
@@ -176,20 +239,22 @@ public class asset_detailActivity extends AppCompatActivity {
                     }
                 }
         );
+
+
     }
 
 
     private void drawLineChart(LineChart chart) {
 
         List<Entry> lineEntries = getDataSet();
-        Log.d("123abc",String.valueOf(lineEntries.get(0)));
+        //Log.d("123abc",String.valueOf(lineEntries.get(0)));
         LineDataSet lineDataSet = new LineDataSet(lineEntries, "Work");
         lineDataSet.setAxisDependency(YAxis.AxisDependency.LEFT);
         lineDataSet.setHighlightEnabled(true);
         lineDataSet.setLineWidth(2);
         lineDataSet.setColor(Color.BLUE);
         lineDataSet.setCircleColor(Color.YELLOW);
-        lineDataSet.setCircleRadius(6);
+        lineDataSet.setCircleRadius(10);
         lineDataSet.setCircleHoleRadius(3);
         lineDataSet.setDrawCircles(false);
         lineDataSet.setDrawHighlightIndicators(true);
@@ -209,12 +274,26 @@ public class asset_detailActivity extends AppCompatActivity {
         chart.setData(lineData);
 
         ArrayList<String> xAxisLabel = new ArrayList<>();
-        xAxisLabel.add("T");
-        xAxisLabel.add("Time");
-        xAxisLabel.add("2-up");
+        String datestatic="a";
+        for(int i=0;i<infors.size();i++)
+        {
+            Log.d("ABC123",infors.get(i).getDate());
+            if(datestatic.equals(infors.get(i).getDate()))
+            {
+               infors.remove(i);
+               i--;
+               continue;
+            }
+
+            xAxisLabel.add(infors.get(i).getDate());
+            Log.d("truong2",infors.get(i).getName());
+
+            datestatic=infors.get(i).getDate();
+        }
+
 
         XAxis xAxis = chart.getXAxis();
-        xAxis.setAxisMaximum(3);
+        xAxis.setAxisMaximum(infors.size());
         xAxis.setGranularity(1f);
         xAxis.setValueFormatter(new IndexAxisValueFormatter(xAxisLabel) {
             @Override
@@ -225,9 +304,21 @@ public class asset_detailActivity extends AppCompatActivity {
 
         YAxis yAxis = chart.getAxisLeft();
         yAxis.setAxisMinimum(0);
-        yAxis.setAxisMaximum(32);
+
         xAxis.setAxisMinimum(0);
-        xAxis.setAxisMaximum(5);
+        switch (spinner_pos){
+            case 0:
+                yAxis.setAxisMaximum(35);
+                break;
+            case  1:
+                yAxis.setAxisMaximum(100);
+                break;
+            case 2:
+                yAxis.setAxisMaximum(5);
+                break;
+        }
+
+        xAxis.setAxisMaximum(infors.size());
 
         chart.getAxisRight().setEnabled(false);
 
@@ -237,10 +328,21 @@ public class asset_detailActivity extends AppCompatActivity {
 
     private List<Entry> getDataSet() {
         List<Entry> lineEntries = new ArrayList<>();
+        Log.d("sizw1",infors.size()+"");
         for(int i=0;i<infors.size();i++)
         {
-            lineEntries.add(new Entry(i, infors.get(i).getValueT()));
-
+            Log.d("sizw1-" ,infors.get(i).getDate()+"");
+            switch (spinner_pos) {
+                case 0:
+                    lineEntries.add(new Entry(i, infors.get(i).getValueT()));
+                    break;
+                case 1:
+                    lineEntries.add(new Entry(i, infors.get(i).getValueH()));
+                    break;
+                case 2:
+                    lineEntries.add(new Entry(i, infors.get(i).getValueW()));
+                    break;
+            }
         }
 
 

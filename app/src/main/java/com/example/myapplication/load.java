@@ -22,7 +22,7 @@ public class load extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.load);
-        onClickStartScheduleJop();
+       onClickStartScheduleJop();
 
         moveActivity();
     }
