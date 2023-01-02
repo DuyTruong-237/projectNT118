@@ -8,7 +8,7 @@
     <LinearLayout
         android:id="@+id/weather"
         android:layout_width="match_parent"
-        android:layout_height="220dp"
+        android:layout_height="240dp"
         android:layout_alignParentRight="true"
         android:layout_marginLeft="20dp"
         android:layout_marginTop="100dp"
@@ -52,7 +52,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginRight="10dp"
-            android:weightSum="2"
+            android:weightSum="3"
             android:orientation="vertical"
             android:layout_weight="1">
             <LinearLayout
@@ -75,7 +75,7 @@
             <LinearLayout
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
-                android:layout_weight="1"
+                android:layout_weight="2"
                 android:layout_marginTop="10dp"
                 android:orientation="vertical"
                 android:weightSum="2">
@@ -83,7 +83,6 @@
                     android:id="@+id/wind"
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
-                    android:layout_marginBottom="5dp"
                     android:layout_below="@+id/map_frame"
                     android:background="@drawable/custom_contentwrapper"
                     android:orientation="horizontal"
@@ -109,16 +108,16 @@
                         android:layout_weight="1"
                         android:text="00"
                         android:textColor="@color/gray"
+                        android:ellipsize="marquee"
+                        android:focusable="true"
+                        android:focusableInTouchMode="true"
+                        android:marqueeRepeatLimit="marquee_forever"
+                        android:scrollHorizontally="true"
+                        android:singleLine="true"
                         android:fontFamily="sans-serif-thin"
                         android:textStyle="bold"
                         android:textSize="40dp" />
                 </LinearLayout>
-                <LinearLayout
-                    android:layout_width="fill_parent"
-                    android:layout_height="fill_parent"
-                    android:layout_weight="1">
-                </LinearLayout>
-
             </LinearLayout>
         </LinearLayout>
 
@@ -126,7 +125,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginLeft="10dp"
-            android:weightSum="4"
+            android:weightSum="3"
             android:orientation="vertical"
             android:layout_weight="1">
             <LinearLayout
@@ -225,12 +224,7 @@
                     android:textSize="40dp" />
 
             </LinearLayout>
-            <LinearLayout
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:layout_weight="1">
 
-            </LinearLayout>
 
         </LinearLayout>
 
