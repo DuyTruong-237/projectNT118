@@ -278,7 +278,6 @@ public class asset_detailActivity extends AppCompatActivity {
         chart.getXAxis().setGranularityEnabled(true);
         chart.getXAxis().setGranularity(1.0f);
         chart.setData(lineData);
-
         ArrayList<String> xAxisLabel = new ArrayList<>();
         String datestatic="a";
 
@@ -297,8 +296,9 @@ public class asset_detailActivity extends AppCompatActivity {
                 {
                     xAxisLabel.add((Integer.parseInt(infors.get(i).getDate().split("/")[1])+1)+"");
                 }
-                else
-                xAxisLabel.add(infors.get(i).getDate());
+                else {
+                    xAxisLabel.add(infors.get(i).getDate());
+                }
                 datestatic=infors.get(i).getDate();
 
                 Log.d("truong2",infors.get(i).getDate()+"");
