@@ -1,32 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@drawable/custom_background_login">
 
     <ImageView
         android:id="@+id/logoLogin"
-        android:layout_width="200dp"
-        android:layout_height="200dp"
-        android:layout_marginTop="20dp"
-        android:src="@drawable/logo1"
+        android:layout_width="247dp"
+        android:layout_height="162dp"
         android:layout_centerHorizontal="true"
-        />
+        android:layout_marginTop="50dp"
+        android:src="@drawable/logo1"/>
 
     <TextView
         android:id="@+id/txtLogin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/logoLogin"
-
+        android:layout_marginTop="60dp"
         android:layout_centerHorizontal="true"
         android:text="Đăng nhập"
-        android:textColor="@color/teal_200"
+        android:textColor="@color/maincolor2"
         android:textSize="30dp"
         android:textStyle="bold" />
     <EditText
         android:id="@+id/edtUsername"
         android:hint="ID người dùng"
         android:layout_marginLeft="40dp"
+        android:text="user1"
         android:layout_marginRight="40dp"
         android:drawablePadding="5dp"
         android:layout_marginTop="30dp"
@@ -34,13 +35,14 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/txtLogin"
         android:drawableStart="@drawable/rsz_user_login"
-        android:drawableTint="#ccc"
+        android:drawableTint="@color/maincolor2"
 
 
         />
     <EditText
         android:id="@+id/edtPass"
         android:hint="Mật khẩu"
+        android:text="Abc@@123"
         android:password="true"
         android:layout_marginLeft="40dp"
         android:layout_marginRight="40dp"
@@ -51,10 +53,7 @@
         android:layout_below="@id/edtUsername"
         android:drawableStart="@drawable/rsz_padlock"
         android:drawableEnd="@drawable/rsz_hidden"
-        android:drawableTint="#ccc"
-
-
-        />
+        android:drawableTint="@color/maincolor2"/>
 
     <CheckBox
         android:id="@+id/cbkReAcc"
@@ -70,13 +69,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/cbkReAcc"
-        android:layout_marginLeft="40dp"
+        android:layout_marginLeft="60dp"
         android:layout_marginTop="40dp"
-        android:layout_marginRight="40dp"
-
+        android:layout_marginRight="60dp"
         android:backgroundTintMode="add"
         android:background="@drawable/custom_button"
         android:text="Đăng nhập"
+        android:textColor="@color/white"
         android:textStyle="bold" />
 
     <TextView
@@ -98,7 +97,6 @@
         android:layout_alignParentRight="true"
         android:layout_marginTop="25dp"
         android:text="Quên mật khẩu?"
-        android:textColor="#132DD8"
         android:layout_marginRight="40dp"
         android:textAllCaps="false"
 

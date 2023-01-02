@@ -15,5 +15,10 @@
         android:title="Devices"
         android:icon="@drawable/device"
         />
+    <item
+        android:id="@+id/item_setting"
+        android:title="Setting"
+        android:icon="@drawable/writing"
+        />
 
 </menu>
