@@ -64,9 +64,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="30dp"
         android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:background="@drawable/night_cloudy_scene">
-
+        android:layout_marginRight="20dp">
     </ImageView>
 
     <LinearLayout
