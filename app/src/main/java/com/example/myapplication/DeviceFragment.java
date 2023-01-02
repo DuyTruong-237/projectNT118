@@ -51,13 +51,15 @@ public class DeviceFragment extends Fragment {
 
             @Override
             public void onItemClick(AdapterView<?> arg0, View arg1, int position, long arg3) {
+                Log.d("lvValue", "here");
+
                 //Object o = lvInfo.getItemAtPosition(position);
                 Device_item a=(Device_item) lvInfo.getItemAtPosition(position);;
 
                 Log.d("lvValue", a.getTitle());
                // Activity a=this.get
                 Intent i = new Intent(getActivity(), activity_info_device.class);
-               i.putExtra("idDevice",a.getInfo());
+                i.putExtra("idDevice",a.getInfo());
                 startActivity(i);
 
             }
