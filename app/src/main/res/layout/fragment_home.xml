@@ -79,9 +79,15 @@
                     android:layout_weight="3"
                     android:fontFamily="sans-serif-thin"
                     android:textStyle="bold"
-                    android:text="MAP"
+                    android:text="Have a nice day babee"
                     android:textSize="35dp"
-                    android:gravity="center">
+                    android:gravity="center"
+                    android:ellipsize="marquee"
+                    android:focusable="true"
+                    android:focusableInTouchMode="true"
+                    android:marqueeRepeatLimit="marquee_forever"
+                    android:scrollHorizontally="true"
+                    android:singleLine="true">
                 </TextView>
 
             </LinearLayout>
