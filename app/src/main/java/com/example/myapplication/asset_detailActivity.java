@@ -86,13 +86,13 @@ public class asset_detailActivity extends AppCompatActivity {
         btn1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Chonngay(btn1);
+                SetDay(btn1);
             }
         });
         btn2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Chonngay(btn2);
+                SetDay(btn2);
             }
         });
         lineChart = findViewById(R.id.chart);
@@ -208,7 +208,7 @@ public class asset_detailActivity extends AppCompatActivity {
             Log.d("err4","1");
         drawLineChart(lineChart);
     }
-    private void Chonngay(Button btn)
+    private void SetDay(Button btn)
     {
         DatePickerDialog datePickerDialog = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
             @Override
@@ -297,9 +297,10 @@ public class asset_detailActivity extends AppCompatActivity {
                 {
                     xAxisLabel.add((Integer.parseInt(infors.get(i).getDate().split("/")[1])+1)+"");
                 }
-                else
-                xAxisLabel.add(infors.get(i).getDate());
-                datestatic=infors.get(i).getDate();
+                else {
+                    xAxisLabel.add(infors.get(i).getDate());
+
+                }datestatic=infors.get(i).getDate();
 
                 Log.d("truong2",infors.get(i).getDate()+"");
             }
