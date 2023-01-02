@@ -297,9 +297,10 @@ public class asset_detailActivity extends AppCompatActivity {
                 {
                     xAxisLabel.add((Integer.parseInt(infors.get(i).getDate().split("/")[1])+1)+"");
                 }
-                else
-                xAxisLabel.add(infors.get(i).getDate());
-                datestatic=infors.get(i).getDate();
+                else {
+                    xAxisLabel.add(infors.get(i).getDate());
+
+                }datestatic=infors.get(i).getDate();
 
                 Log.d("truong2",infors.get(i).getDate()+"");
             }
