@@ -8,7 +8,7 @@
         android:id="@+id/txtTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Line Chart"
+        android:text="Temperature"
         android:gravity="center"
         android:textColor="@color/maincolor2"
         android:textSize="40dp"
@@ -18,13 +18,12 @@
         android:id="@+id/sn_thumbnail"
         android:layout_below="@+id/txtTitle"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_marginStart="20dp"
-        android:layout_alignParentLeft="true"
+        android:layout_height="40dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
         android:layout_marginTop="50dp"
         android:spinnerMode="dialog"
         app:layout_constraintEnd_toEndOf="parent"
-
         />
     <LinearLayout
         android:layout_marginTop="20dp"
@@ -45,6 +44,10 @@
                 android:id="@+id/btn_from"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
+                android:textSize="20dp"
+                android:textColor="@color/tt_color"
+                android:text="Từ ngày"
+                android:fontFamily="sans-serif"
                 android:background="@drawable/custom_button_date"/>
 
         </LinearLayout>
@@ -59,6 +62,10 @@
                 android:id="@+id/btn_to"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
+                android:fontFamily="sans-serif"
+                android:textColor="@color/tt_color"
+                android:textSize="20dp"
+                android:text="Đến ngày"
                 android:background="@drawable/custom_button_date"/>
 
 
@@ -68,12 +75,12 @@
     </LinearLayout>
 
     <LinearLayout
-
+        android:id="@+id/ll_chart"
         android:layout_width="match_parent"
         android:layout_height="280dp"
         android:layout_below="@+id/sn_thumbnail"
-        android:background="@drawable/custom_background_chart"
-        android:layout_marginTop="180dp">
+        android:background="@color/white"
+        android:layout_marginTop="160dp">
 
     <com.github.mikephil.charting.charts.LineChart
         android:layout_below="@+id/txtTitle"
@@ -83,4 +90,20 @@
         android:layout_height="250dp" />
 
     </LinearLayout>
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:layout_below="@id/ll_chart">
+
+    <Button
+        android:id="@+id/btn_view"
+        android:layout_width="120dp"
+        android:layout_height="60dp"
+        android:background="@drawable/custom_button_date"
+        android:textColor="@color/tt_color"
+        android:textSize="20dp"
+       android:fontFamily="sans-serif-black"
+        android:text="Xem" />
+</LinearLayout>
 </RelativeLayout>
