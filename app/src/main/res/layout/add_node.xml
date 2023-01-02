@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <TextView
+        android:id="@+id/titlemain"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="ADD ITEMT"
+        android:textAlignment="center"
+        android:layout_marginTop="30dp"
+        android:textSize="30dp"
+        />
+   <EditText
+       android:id="@+id/edt_title"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:layout_marginTop="20dp"
+       android:hint="  Title"
+       android:textSize="30dp"
+       android:layout_marginLeft="40dp"
+       android:layout_marginRight="40dp"
+
+       android:layout_below="@+id/titlemain"/>
+
+
+   <Spinner
+        android:id="@+id/sn_thumbnail"
+        android:layout_below="@id/edt_title"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginTop="30dp"
+        android:spinnerMode="dialog"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        />
+    <EditText
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:hint="Min"
+        android:id="@+id/valueMin"
+        android:textSize="20dp"
+        android:layout_below="@id/sn_thumbnail"
+        android:layout_margin="20dp"
+        />
+    <EditText
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:hint="Max"
+        android:layout_alignParentRight="true"
+        android:id="@+id/valueMax"
+        android:textSize="20dp"
+        android:layout_below="@id/sn_thumbnail"
+        android:layout_margin="20dp"
+        />
+    <Button
+        android:id="@+id/btn_add"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:textSize="30dp"
+        android:textColor="@color/tt_color"
+        android:text="Add"
+        android:layout_alignParentBottom="true"
+
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+       android:layout_marginBottom="100dp"
+        android:fontFamily="sans-serif"
+
+        android:background="@drawable/custom_button_date"/>
+</RelativeLayout>

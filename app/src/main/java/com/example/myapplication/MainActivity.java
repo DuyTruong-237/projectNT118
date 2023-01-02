@@ -46,6 +46,7 @@ public class MainActivity extends AppCompatActivity {
                     case R.id.item_Device:
                         vp.setCurrentItem(2);
                         break;
+
                 }
                 return true;
             }

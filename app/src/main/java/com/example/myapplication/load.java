@@ -47,7 +47,7 @@ public class load extends AppCompatActivity {
 
         ComponentName componentName=new ComponentName(this, MyJobService.class);
         JobInfo jobInfo=new JobInfo.Builder(JOB_ID, componentName)
-                .setRequiredNetworkType(JobInfo.NETWORK_TYPE_UNMETERED)
+                .setRequiredNetworkType(JobInfo.NETWORK_TYPE_ANY)
                 .setPersisted(true)
                 .setPeriodic(15 * 60 *1000)
                 .build();
