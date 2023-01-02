@@ -4,6 +4,8 @@ package com.example.myapplication;
 
 import android.app.job.JobParameters;
 import android.app.job.JobService;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.util.Log;
 import android.widget.Toast;
 import android.app.Notification;
@@ -30,20 +32,61 @@ public class MyJobService extends JobService {
     public static final String TAG = MyJobService.class.getName();
     private boolean jobCancelled;
     public static DatabaseHelper db;
-    int j;
+    int te,hu,wi;
+    String titlegroub,infoGroup;
+
     private NotificationManagerCompat notificationManagerCompat;
     APIInterface apiInterface;
     List<asset_infor> infors;
+    SharedPreferences myPreferences;
+    SharedPreferences.Editor myEditor;
     @Override
     public boolean onStartJob(JobParameters jobParameters) {
         Log.d(TAG,"JOB STARTED");
         db = new DatabaseHelper(this);
         this.notificationManagerCompat = NotificationManagerCompat.from(this);
+        myPreferences
+                = PreferenceManager.getDefaultSharedPreferences(this);
 
+
+        myEditor = myPreferences.edit();
+        if(myPreferences.getInt("size",0)==0)
+        {
+            setPrefe();
+        }
         Log.d(TAG,"JOB STARTED1");
         doBackgroundWork(jobParameters);
         return true;
     }
+
+    private void setPrefe() {
+        myEditor.putInt("size",0);
+        int size=myPreferences.getInt("size",0);
+        for(int i=0;i<3;i++)
+        {
+            String title="title"+i;
+            String min="min"+i;
+            String max="max"+i;
+            float h=0;
+            switch (i){
+                case 0: myEditor.putString(title,"T");
+                    myEditor.putFloat(min,Float.valueOf(0));
+                    myEditor.putFloat(max,Float.valueOf(30));
+                    ;break;
+                case 1: myEditor.putString(title,"H");
+                    myEditor.putFloat(min,Float.valueOf(0));
+                    myEditor.putFloat(max,Float.valueOf(80));break;
+                case 2: myEditor.putString(title,"W");
+                    myEditor.putFloat(min,Float.valueOf(0));
+                    myEditor.putFloat(max,Float.valueOf(4));break;
+
+            }
+            size++;
+        }
+        myEditor.putInt("size",3);
+        myEditor.commit();
+    }
+
     private void doBackgroundWork(final JobParameters jobParameters)
     {
         new Thread((new Runnable() {
@@ -100,13 +143,13 @@ public class MyJobService extends JobService {
             }
         });
     }
-    private void sendOnChannel1( float t)  {
-        String title = "T";
-        String message = String.valueOf(t);
+    private void sendOnChannel1( String t,String title)  {
 
+        String maintitle=title.substring(4,title.length()-1);
+        String message = t.substring( 4, t.length()-1);
         Notification notification = new NotificationCompat.Builder(this, NotificationApp.CHANNEL_1_ID)
-                .setSmallIcon(R.drawable.ic_temp)
-                .setContentTitle(title)
+                .setSmallIcon(R.drawable.logo1)
+                .setContentTitle(maintitle)
                 .setContentText(message)
                 .setPriority(NotificationCompat.PRIORITY_HIGH)
                 .setCategory(NotificationCompat.CATEGORY_MESSAGE)
@@ -137,7 +180,9 @@ public class MyJobService extends JobService {
                 // double t=asset.attributes.get("temperature").getAsJsonObject().get("value").getAsFloat();
                 //String id= arr.get(0).getAsJsonObject().get("id").getAsString();
                 //String a=String.valueOf(arr.size());
-                 j=0;
+                 te=0;
+                 hu=0;
+                 wi=0;
                 for(int i=0;i<arr.size();i++)
                 {
                     String nameasset=arr.get(i).getAsJsonObject().get("name").getAsString();
@@ -168,12 +213,39 @@ public class MyJobService extends JobService {
                                     Log.d("logvalue1",  "abc");
                                     t=keyvalue.get("value").getAsFloat();
                                     Log.d("logvalue1",  t+"");
-                                    if (j==0)
-                                    {
-                                        sendOnChannel1(t);
-                                        j++;
+                                        if(nameasset.equals("Weather Asset")) {
+
+
+                                            if (namevalue.equals("temperature")) {
+                                                if (myPreferences.getFloat("max0", 0) < t || myPreferences.getFloat("min0", 0) > t) {
+                                                    titlegroub += myPreferences.getString("title0", "uknok") + "    ";
+                                                    infoGroup += t + "     ";
+                                                }
+                                                te++;
+
+                                            }
+                                            if (namevalue.equals("humidity")) {
+                                                Log.d("humm", t + "");
+                                                if (myPreferences.getFloat("max1", 0) < t || myPreferences.getFloat("min1", 0) > t) {
+                                                    titlegroub += myPreferences.getString("title1", "uknok") + "    ";
+                                                    infoGroup += t + "     ";
+                                                    hu++;
+                                                }
+                                            }
+                                            if (namevalue.equals("windSpeed")) {
+                                                if (myPreferences.getFloat("max2", 0) < t || myPreferences.getFloat("min2", 0) > t) {
+                                                    titlegroub += myPreferences.getString("title2", "uknok") + "    ";
+                                                    infoGroup += t + "     ";
+                                                    wi++;
+                                                }
+
+                                            }
+                                        }
+
+
+
                                         Log.d("logvalue3",  t+"");
-                                    }
+
                                     arrValue.add(t);
                                 }
                             }catch (Exception e)
@@ -204,6 +276,8 @@ public class MyJobService extends JobService {
                     }
 
                 }
+                if (infoGroup.length()!=0)
+                sendOnChannel1(infoGroup,titlegroub);
 
                 //txttype.setText(asset.type);
             }
@@ -220,7 +294,7 @@ public class MyJobService extends JobService {
 
 
 
-        // ifadapter.add(new infoAsset("Hoa hồng Huy","18000"));
+
     }
 
 }

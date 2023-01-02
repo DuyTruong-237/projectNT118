@@ -16,7 +16,7 @@
         />
     <TextView
         android:layout_below="@id/txtTitle"
-        android:id="@+id/txtInfo"
+        android:id="@+id/txtStyle"
         android:text="00"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="10dp"
@@ -24,6 +24,24 @@
         android:textColor="@color/maincolor2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        />
+    <TextView
+        android:textAlignment="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="00"
+        android:textSize="20dp"
+        android:layout_marginTop="5dp"
+        android:id="@+id/valueMin"
+        />
+    <TextView
+        android:textAlignment="center"
+        android:textSize="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="00"
+        android:layout_below="@+id/valueMin"
+        android:id="@+id/valueMax"
         />
 
 
