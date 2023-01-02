@@ -4,14 +4,12 @@
     <!-- permission list -->
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.POST_NOTIFICATIONS"/>
+
     <uses-permission-sdk-23 android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission-sdk-23 android:name="android.permission.INTERNET" />
     <uses-permission-sdk-23 android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission-sdk-23 android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
     <application
-        android:name=".NotificationApp"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -21,24 +19,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication"
         tools:targetApi="31">
-        <service android:name=".MyJobService"
-            android:permission="android.permission.BIND_JOB_SERVICE"/>
+
         <activity
             android:name=".MenuActivity"
-            android:exported="false">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
-        <activity
-            android:name=".activityAddItem"
-            android:exported="false">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
-        <activity
-            android:name=".MainActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
@@ -54,8 +37,7 @@
 
 
         <activity
-            android:name=".activity_info_device"
-            android:parentActivityName=".activity_list_Devices"
+            android:name=".MainActivity"
             android:exported="false">
             <meta-data
 
@@ -79,21 +61,26 @@
                 android:value="" />
         </activity>
         <activity
+<<<<<<< HEAD
+<<<<<<< HEAD
+
+=======
             android:name=".activity_list_Devices"
+=======
+            android:name=".activity_info_device"
+>>>>>>> parent of ad89d8f (update#7)
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".asset_detailActivity"
-            android:exported="false">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
-        <activity
-            android:name=".load"
+<<<<<<< HEAD
+>>>>>>> origin/truong
+            android:name=".MainActivity"
+=======
+            android:name=".activity_list_Devices"
+>>>>>>> parent of ad89d8f (update#7)
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
