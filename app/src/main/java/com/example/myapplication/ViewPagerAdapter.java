@@ -38,6 +38,8 @@ public class ViewPagerAdapter extends FragmentStatePagerAdapter {
                 return new MapFragment();
             case 2:
                 return new DeviceFragment();
+            case 3:
+                return new NoteFragment();
 
             default:
                 return new HomeFragment();
@@ -47,7 +49,7 @@ public class ViewPagerAdapter extends FragmentStatePagerAdapter {
 
     @Override
     public int getCount() {
-        return 3;
+        return 4;
     }
 
     /*@NonNull
