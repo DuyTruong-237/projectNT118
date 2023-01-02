@@ -46,9 +46,7 @@ public class MainActivity extends AppCompatActivity {
                     case R.id.item_Device:
                         vp.setCurrentItem(2);
                         break;
-                    case R.id.item_setting:
-                        vp.setCurrentItem(3);
-                        break;
+
                 }
                 return true;
             }
