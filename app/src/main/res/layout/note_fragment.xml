@@ -27,8 +27,6 @@
        android:id="@+id/btndetail"
        android:layout_width="wrap_content"
        android:layout_height="wrap_content"
-
-
        android:layout_alignParentBottom="true"
        android:layout_alignParentEnd="true"
        android:layout_marginStart="0dp"
@@ -37,5 +35,4 @@
        android:background="@drawable/custom_detail"
        android:text="Detail"
        android:textColor="@color/white" />
-
 </RelativeLayout>
