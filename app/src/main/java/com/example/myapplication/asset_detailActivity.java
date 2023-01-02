@@ -52,6 +52,7 @@ public class asset_detailActivity extends AppCompatActivity {
     Spinner snThumbnail;
     Button btn1;
     Button btn2;
+    Button btn_xem;
     int img = Thumbnail.Thumbnail1.getImg();
     ThumbnailAdapter thumbnailAdapter;
     @Override
@@ -59,19 +60,21 @@ public class asset_detailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail_asset);
         txtTitle=findViewById(R.id.txtTitle);
-        btn1=(Button) findViewById(R.id.btn_from);
-        btn2 =(Button) findViewById(R.id.btn_to);
+        btn_xem = (Button) findViewById(R.id.btn_xem) ;
+
+        btn_xem = (Button) findViewById(R.id.btn_xem) ;
+
         Bundle extras = getIntent().getExtras();
         if (extras!=null)
-          assetID=  extras.getString("idDevice");
-
+          assetID= extras.getString("idDevice");
         thumbnailAdapter = new ThumbnailAdapter(
                 this,
                 R.layout.item_thumbnail,
                 R.layout.item_selected_thumbnail
         );
         setThumbnail();
-
+        btn1=(Button) findViewById(R.id.btn_from);
+        btn2 =(Button) findViewById(R.id.btn_to);
         btn1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -80,17 +83,25 @@ public class asset_detailActivity extends AppCompatActivity {
         });
         btn2.setOnClickListener(new View.OnClickListener() {
             @Override
+
             public void onClick(View v) {
                 Chonngay(btn2);
             }
         });
         lineChart = findViewById(R.id.chart);
+        db = new DatabaseHelper(this);
 
-
-
-       // callApiAndSave();*/
-
-       filterIF();
+        infors = db.getAllContacts();
+       // callApiAndSave();
+      for(int i=0;i<infors.size();i++)
+      {
+          if (!infors.get(i).getIdasset().equals(assetID))
+          {
+              infors.remove(i);
+          }
+      }
+      txtTitle.setText(infors.get(0).getName());
+        drawLineChart(lineChart);
 
 
 
@@ -125,26 +136,12 @@ public class asset_detailActivity extends AppCompatActivity {
         dataSet.setColors(ColorTemplate.COLORFUL_COLORS);
         pieChart.animateXY(5000, 5000);*/
     }
-    private void filterIF(){
-        db = new DatabaseHelper(this);
-        //db.addInfor(new asset_infor("6H4PeKLRMea1L0WsRXXWp9","Weather Asset","30/11/122",Float.valueOf(15.9),Float.valueOf(15.9),2.3));
-        infors = db.getAllContacts();
-        for(int i=0;i<infors.size();i++)
-        {
-            if (!infors.get(i).getIdasset().equals(assetID))
-            {
-                infors.remove(i);
-            }
-        }
-        txtTitle.setText(infors.get(0).getName());
-        drawLineChart(lineChart);
-    }
     private void Chonngay(Button btn)
     {
         DatePickerDialog datePickerDialog = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                btn.setText(year + "/" + month +"/"+dayOfMonth);
+                btn.setText(dayOfMonth + "/" + month +"/"+year);
             }
         }, 2022, 01, 29);
         datePickerDialog.show();
@@ -178,7 +175,46 @@ public class asset_detailActivity extends AppCompatActivity {
         );
     }
 
+    private void callApiAndSave() {
+        apiInterface = APIClient.getClient().create(APIInterface.class);
+        Call<Asset> call = apiInterface.getAsset("6H4PeKLRMea1L0WsRXXWp9");//, "Bearer "+ token);
+        call.enqueue(new Callback<Asset>() {
+            @Override
+            public void onResponse(Call<Asset> call, Response<Asset> response) {
+                Log.d("API CALL", response.code()+"");
+                //Log.d ("API CALL", response.toString());
+                Asset asset = response.body();
 
+                Log.d("API CALL", asset.type+"");
+                float t=asset.attributes.get("temperature").getAsJsonObject().get("value").getAsInt();
+                String a=String.valueOf(t);
+                Date date=new Date();
+                String day=date.getDate()+"/"+date.getMonth()+"/"+date.getYear();
+                //db.addInfor(new asset_infor(1,"temperature","t",day,t));
+                infors = db.getAllContacts();
+                //Log.d("hello",infors.get(0).getId()+infors.get(0).getIdasset()+"-"+infors.get(0).getDate1()+"-"+infors.get(0).getValue() );
+                /*int h=asset.attributes.get("humidity").getAsJsonObject().get("value").getAsInt();
+                a=String.valueOf(h);
+                Log.d(TAG, a);
+                a=asset.attributes.get("weatherData").getAsJsonObject().get("value").getAsJsonObject().get("weather").getAsJsonArray().get(0).getAsJsonObject().get("description").getAsString();
+                Log.d(TAG, a);
+                float w=asset.attributes.get("windSpeed").getAsJsonObject().get("value").getAsFloat();
+                a=String.valueOf(w);
+                Log.d(TAG, a);*/
+                //txttype.setText(asset.type);
+
+            }
+
+
+            @Override
+            public void onFailure(Call<Asset> call, Throwable t) {
+                Log.d("API CALL", t.getMessage().toString());
+
+                //t.printStackTrace();
+
+            }
+        });
+    }
     private void drawLineChart(LineChart chart) {
 
         List<Entry> lineEntries = getDataSet();
@@ -226,8 +262,6 @@ public class asset_detailActivity extends AppCompatActivity {
         YAxis yAxis = chart.getAxisLeft();
         yAxis.setAxisMinimum(0);
         yAxis.setAxisMaximum(32);
-        xAxis.setAxisMinimum(0);
-        xAxis.setAxisMaximum(5);
 
         chart.getAxisRight().setEnabled(false);
 
@@ -240,7 +274,6 @@ public class asset_detailActivity extends AppCompatActivity {
         for(int i=0;i<infors.size();i++)
         {
             lineEntries.add(new Entry(i, infors.get(i).getValueT()));
-
         }
 
 
