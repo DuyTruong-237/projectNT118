@@ -16,4 +16,6 @@
     <string name="info_device">Thông tin thiết bị truy cập</string>
     <string name="list_device">Danh sách thiết bị </string>
     <string name="chart">Biểu Đồ</string>
+
+    <string name="setting">Setting</string>
 </resources>

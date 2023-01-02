@@ -130,7 +130,7 @@
                 android:layout_weight="3"
                 android:layout_below="@id/ll_chart">
                 <Button
-                    android:id="@+id/btn_xem"
+                    android:id="@+id/btn_view"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="10dp"
