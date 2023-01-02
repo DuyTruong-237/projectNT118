@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.DatePicker;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -52,8 +53,10 @@ public class asset_detailActivity extends AppCompatActivity {
     Spinner snThumbnail;
     Button btn1;
     Spinner spiner;
+    List<asset_infor>arr3;
     Button btn2,btnView;
     int spinner_pos;
+    CheckBox chkMonth;
     int img = Thumbnail.Thumbnail1.getImg();
     ThumbnailAdapter thumbnailAdapter;
     @Override
@@ -65,6 +68,7 @@ public class asset_detailActivity extends AppCompatActivity {
         btn2 =(Button) findViewById(R.id.btn_to);
         btnView=findViewById(R.id.btn_view);
         spiner=findViewById(R.id.sn_thumbnail);
+        chkMonth=findViewById(R.id.chkMonth);
         Bundle extras = getIntent().getExtras();
 
         if (extras!=null)
@@ -166,6 +170,8 @@ public class asset_detailActivity extends AppCompatActivity {
         String[] dateTo=btn2.getText().toString().split("/");
         String dayfrom=dateFrom[0]+"/"+(Integer.parseInt(dateFrom[1])-1)+"/"+(Integer.parseInt(dateFrom[2])-1900);
         String dayto=dateTo[0]+"/"+(Integer.parseInt(dateTo[1])-1)+"/"+(Integer.parseInt(dateTo[2])-1900);
+
+
         for(int i=0;i<infors.size();i++) {
             if (!infors.get(i).getIdasset().equals(assetID)) {
                 Log.d("truong2", infors.get(1).getName() + "");
@@ -275,21 +281,34 @@ public class asset_detailActivity extends AppCompatActivity {
 
         ArrayList<String> xAxisLabel = new ArrayList<>();
         String datestatic="a";
+
         for(int i=0;i<infors.size();i++)
         {
             Log.d("ABC123",infors.get(i).getDate());
             if(datestatic.equals(infors.get(i).getDate()))
             {
-               infors.remove(i);
-               i--;
-               continue;
+                infors.remove(i);
+                i--;
+
+
+            }
+            else{
+                if(chkMonth.isChecked())
+                {
+                    xAxisLabel.add((Integer.parseInt(infors.get(i).getDate().split("/")[1])+1)+"");
+                }
+                else
+                xAxisLabel.add(infors.get(i).getDate());
+                datestatic=infors.get(i).getDate();
+
+                Log.d("truong2",infors.get(i).getDate()+"");
             }
 
-            xAxisLabel.add(infors.get(i).getDate());
-            Log.d("truong2",infors.get(i).getName());
 
-            datestatic=infors.get(i).getDate();
+
         }
+        Log.d("ABC1234",infors.size()+"");
+        //infors=arr3;
 
 
         XAxis xAxis = chart.getXAxis();
@@ -316,6 +335,8 @@ public class asset_detailActivity extends AppCompatActivity {
             case 2:
                 yAxis.setAxisMaximum(5);
                 break;
+            default:
+                yAxis.setAxisMaximum(35);
         }
 
         xAxis.setAxisMaximum(infors.size());
@@ -329,20 +350,47 @@ public class asset_detailActivity extends AppCompatActivity {
     private List<Entry> getDataSet() {
         List<Entry> lineEntries = new ArrayList<>();
         Log.d("sizw1",infors.size()+"");
-        for(int i=0;i<infors.size();i++)
+        String a="a";
+        int j=0;
+        for(float i=0;i<infors.size();i++)
         {
-            Log.d("sizw1-" ,infors.get(i).getDate()+"");
-            switch (spinner_pos) {
-                case 0:
-                    lineEntries.add(new Entry(i, infors.get(i).getValueT()));
-                    break;
-                case 1:
-                    lineEntries.add(new Entry(i, infors.get(i).getValueH()));
-                    break;
-                case 2:
-                    lineEntries.add(new Entry(i, infors.get(i).getValueW()));
-                    break;
+            if(!a.equals(infors.get((int)i).getDate()))
+            {
+                Log.d("sizw1-" ,infors.get((int)i).getValueT()+"");
+
+                    if(spinner_pos==0)
+                    {
+                        //int vl=(int)infors.get((int)i).getValueT();
+                        lineEntries.add(new Entry(j, infors.get((int)i).getValueT()));
+                        j++;
+                        Log.d("dddd", infors.get((int)i).getValueT()+"");
+                    }
+                if(spinner_pos==1)
+                {
+                    //int vl=(int)infors.get((int)i).getValueT();
+                    lineEntries.add(new Entry(j, infors.get((int)i).getValueH()));
+                    j++;
+                    Log.d("dddd", infors.get((int)i).getValueH()+"");
+                }
+                if(spinner_pos==2)
+                {
+                    //int vl=(int)infors.get((int)i).getValueT();
+                    lineEntries.add(new Entry(j, infors.get((int)i).getValueW()));
+                    j++;
+                    Log.d("dddd", infors.get((int)i).getValueT()+"");
+                }
+                    a=infors.get((int)i).getDate();
+
+                /*   if(spinner_pos==1)
+                        lineEntries.add(new Entry(i, infors.get(i).getValueH()));
+
+                   if(spinner_pos==2)
+                        lineEntries.add(new Entry(i, infors.get(i).getValueW()));
+
+                a=infors.get(i).getDate();*/
             }
+
+
         }
 
 
