@@ -109,7 +109,12 @@
                         android:layout_weight="1"
                         android:text="00"
                         android:textColor="@color/gray"
+                        android:ellipsize="marquee"
+                        android:focusable="true"
+                        android:focusableInTouchMode="true"
+                        android:marqueeRepeatLimit="marquee_forever"
                         android:scrollHorizontally="true"
+                        android:singleLine="true"
                         android:fontFamily="sans-serif-thin"
                         android:textStyle="bold"
                         android:textSize="40dp" />

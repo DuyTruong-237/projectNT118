@@ -37,7 +37,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/txtLogin"
         android:drawableStart="@drawable/rsz_user_login"
-        android:drawableTint="#ccc"
+        android:drawableTint="@color/maincolor2"
 
 
         />
@@ -55,10 +55,7 @@
         android:layout_below="@id/edtUsername"
         android:drawableStart="@drawable/rsz_padlock"
         android:drawableEnd="@drawable/rsz_hidden"
-        android:drawableTint="#ccc"
-
-
-        />
+        android:drawableTint="@color/maincolor2"/>
 
     <CheckBox
         android:id="@+id/cbkReAcc"
