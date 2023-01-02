@@ -82,7 +82,7 @@ public class asset_detailActivity extends AppCompatActivity {
                 R.layout.item_selected_thumbnail
         );
         setThumbnail();
-
+        getDB();
         btn1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

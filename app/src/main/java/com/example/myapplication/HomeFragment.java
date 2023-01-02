@@ -31,8 +31,8 @@ import retrofit2.Response;
 
 public class HomeFragment extends Fragment {
     APIInterface apiInterface;
-    ImageView btnsetting;
-    private TextView txtto,txtHum,txtCL,txtWind, txtUV;
+    ImageView btnsetting,imgW;
+    private TextView txtto,txtHum,txtCL,txtWind, txtUV,txtStatus;
     private ImageView btnMap;
     private static final int JOB_ID =123 ;
     @Nullable
@@ -51,6 +51,8 @@ public class HomeFragment extends Fragment {
         txtWind=view.findViewById(R.id.txtWind);
         btnsetting=view.findViewById(R.id.setting);
         txtUV=view.findViewById(R.id.txtUV);
+        txtStatus=view.findViewById(R.id.txtStatus);
+
         btnMap=view.findViewById(R.id.mapButton);
         getData();
         btnsetting.setOnClickListener(new View.OnClickListener() {
@@ -101,6 +103,21 @@ public class HomeFragment extends Fragment {
                 Log.d("API CALL", asset.type+"");
                 int t=asset.attributes.get("temperature").getAsJsonObject().get("value").getAsInt();
                 String a=String.valueOf(t);
+                if(t>30)
+                {
+                    btnMap.setImageResource(R.drawable.hot);
+                    txtStatus.setText("HOT");
+                }
+                else if(t<15)
+                {
+                    btnMap.setImageResource(R.drawable.cold);
+                    txtStatus.setText("COLD");
+                }
+                else {{
+                    btnMap.setImageResource(R.drawable.smiling);
+
+                    txtStatus.setText("NICE");
+                }}
                 txtto.setText(a);
                 int h=asset.attributes.get("humidity").getAsJsonObject().get("value").getAsInt();
                 a=String.valueOf(h);
