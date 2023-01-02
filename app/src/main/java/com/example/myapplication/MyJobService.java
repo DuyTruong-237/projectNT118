@@ -6,7 +6,9 @@ import android.app.job.JobParameters;
 import android.app.job.JobService;
 import android.util.Log;
 import android.widget.Toast;
-
+import android.app.Notification;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
 import com.example.myapplication.API.APIClient;
 import com.example.myapplication.API.APIInterface;
 import com.example.myapplication.DB.DatabaseHelper;
@@ -28,12 +30,16 @@ public class MyJobService extends JobService {
     public static final String TAG = MyJobService.class.getName();
     private boolean jobCancelled;
     public static DatabaseHelper db;
+    int j;
+    private NotificationManagerCompat notificationManagerCompat;
     APIInterface apiInterface;
     List<asset_infor> infors;
     @Override
     public boolean onStartJob(JobParameters jobParameters) {
         Log.d(TAG,"JOB STARTED");
         db = new DatabaseHelper(this);
+        this.notificationManagerCompat = NotificationManagerCompat.from(this);
+
         Log.d(TAG,"JOB STARTED1");
         doBackgroundWork(jobParameters);
         return true;
@@ -49,9 +55,6 @@ public class MyJobService extends JobService {
                     }
                     //callApiAndSave();
                     fakeData();
-
-
-
                 Log.d(TAG,"JOB finished");
                 jobFinished(jobParameters,false);
             }
@@ -97,7 +100,21 @@ public class MyJobService extends JobService {
             }
         });
     }
+    private void sendOnChannel1( float t)  {
+        String title = "T";
+        String message = String.valueOf(t);
 
+        Notification notification = new NotificationCompat.Builder(this, NotificationApp.CHANNEL_1_ID)
+                .setSmallIcon(R.drawable.ic_temp)
+                .setContentTitle(title)
+                .setContentText(message)
+                .setPriority(NotificationCompat.PRIORITY_HIGH)
+                .setCategory(NotificationCompat.CATEGORY_MESSAGE)
+                .build();
+
+        int notificationId = 1;
+        this.notificationManagerCompat.notify(notificationId, notification);
+    }
     @Override
     public boolean onStopJob(JobParameters jobParameters) {
         Log.d(TAG,"JOB STOPPED");
@@ -120,7 +137,7 @@ public class MyJobService extends JobService {
                 // double t=asset.attributes.get("temperature").getAsJsonObject().get("value").getAsFloat();
                 //String id= arr.get(0).getAsJsonObject().get("id").getAsString();
                 //String a=String.valueOf(arr.size());
-
+                 j=0;
                 for(int i=0;i<arr.size();i++)
                 {
                     String nameasset=arr.get(i).getAsJsonObject().get("name").getAsString();
@@ -151,6 +168,12 @@ public class MyJobService extends JobService {
                                     Log.d("logvalue1",  "abc");
                                     t=keyvalue.get("value").getAsFloat();
                                     Log.d("logvalue1",  t+"");
+                                    if (j==0)
+                                    {
+                                        sendOnChannel1(t);
+                                        j++;
+                                        Log.d("logvalue3",  t+"");
+                                    }
                                     arrValue.add(t);
                                 }
                             }catch (Exception e)
