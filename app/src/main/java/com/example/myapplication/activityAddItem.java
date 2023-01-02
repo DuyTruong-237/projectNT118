@@ -13,6 +13,7 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -69,6 +70,7 @@ public class activityAddItem extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 setData();
+                Toast.makeText(activityAddItem.this,"Updated successful",Toast.LENGTH_SHORT).show();
             }
 
 
