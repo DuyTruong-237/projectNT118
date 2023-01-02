@@ -31,6 +31,7 @@ import retrofit2.Response;
 
 public class HomeFragment extends Fragment {
     APIInterface apiInterface;
+    ImageView btnsetting;
     private TextView txtto,txtHum,txtCL,txtWind, txtUV;
     private ImageView btnMap;
     private static final int JOB_ID =123 ;
@@ -48,9 +49,17 @@ public class HomeFragment extends Fragment {
         txtHum=view.findViewById(R.id.txtHum);
         txtCL=view.findViewById(R.id.txtClouds);
         txtWind=view.findViewById(R.id.txtWind);
+        btnsetting=view.findViewById(R.id.setting);
         txtUV=view.findViewById(R.id.txtUV);
         btnMap=view.findViewById(R.id.mapButton);
         getData();
+        btnsetting.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i=new Intent(getActivity(),activityAddItem.class);
+                startActivity(i);
+            }
+        });
     }
 
     private void getData() {

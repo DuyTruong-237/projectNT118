@@ -28,13 +28,7 @@
             android:text="Trang chủ"
             android:layout_centerVertical="true"/>
 
-        <ImageView
-            android:id="@+id/iv_setting"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:src="@drawable/ic_setting"
-            android:layout_centerVertical="true"></ImageView>
+
 
     </RelativeLayout>
 
