@@ -299,7 +299,6 @@ public class asset_detailActivity extends AppCompatActivity {
                 }
                 else {
                     xAxisLabel.add(infors.get(i).getDate());
-
                 }datestatic=infors.get(i).getDate();
 
                 Log.d("truong2",infors.get(i).getDate()+"");
