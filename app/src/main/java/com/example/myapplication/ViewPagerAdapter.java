@@ -38,6 +38,7 @@ public class ViewPagerAdapter extends FragmentStatePagerAdapter {
                 return new MapFragment();
             case 2:
                 return new DeviceFragment();
+
             default:
                 return new HomeFragment();
         }
