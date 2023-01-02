@@ -6,7 +6,7 @@
         android:id="@+id/titlemain"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="ADD ITEMT"
+        android:text="ADD ITEM"
         android:textAlignment="center"
         android:layout_marginTop="30dp"
         android:textSize="30dp"
@@ -20,7 +20,6 @@
        android:textSize="30dp"
        android:layout_marginLeft="40dp"
        android:layout_marginRight="40dp"
-
        android:layout_below="@+id/titlemain"/>
 
 
